@@ -1,0 +1,76 @@
+@import '../../../styles/variables.scss';
+
+:host {
+
+  .card {
+    width: 54.8em;
+    max-width: 90%;
+    margin: 0 auto;
+  }
+
+  .dialog-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 0 1em;
+
+    h2 {
+      flex: 1 0 auto;
+      text-align: center;
+      padding-left: 40px;
+    }
+  }
+
+  .dialog-body {
+    color: $button-font-colour;
+  }
+
+  .warning {
+    display: flex;
+    align-items: center;
+    min-height: 42px;
+    align-content: center;
+    padding: 0.75em 1.25em;
+    background-color: #856404;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+
+    .material-icons {
+      margin: 0 0.3em 0 0;
+    }
+
+    p {
+      color: yellow;
+      margin: 0;
+    }
+
+    a {
+      color: #fff;
+    }
+  }
+
+  .report-tags {
+    padding: 0 0 1.6em;
+    margin: 2.6em 0 1.6em;
+
+    li {
+      display: inline-block;
+      max-width: 35em;
+    }
+
+    .button-report {
+      padding: 0 10px;
+      font-size: 1.4em;
+      height: 25px;
+      margin: 0 0 6px;
+    }
+  }
+
+  .button-report-action {
+    display: block;
+    font-size: 1.4em;
+    padding: 0 20px;
+    margin: 0 auto;
+  }
+
+}

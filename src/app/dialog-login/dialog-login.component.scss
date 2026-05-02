@@ -1,0 +1,29 @@
+@import '../styles/variables.scss';
+
+:host {
+
+  .card {
+    width: 54.8em;
+    max-width: 90%;
+    margin: 0 auto;
+  }
+
+  .dialog-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 0 1em;
+
+    h2 {
+      flex: 1 0 auto;
+      text-align: center;
+      padding-left: 40px;
+    }
+  }
+
+  .dialog-body {
+    color: $button-font-colour;
+    padding-bottom: 40px;
+  }
+
+}

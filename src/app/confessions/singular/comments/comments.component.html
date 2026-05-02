@@ -1,0 +1,17 @@
+<div *ngIf="displayedComments.length" class="card-comments">
+  <span id="appComments" class="comment-anchor"></span>
+  <ng-container *ngFor="let comment of displayedComments; let index = index; trackBy: trackById">
+    <app-comment
+      *ngIf="!comment.hide"
+      [isCollapsed]="comment.isCollapsed || 0"
+      [comment]="comment"
+      [isActive]="activeComment === comment.id"
+      [confessionId]="confessionId"
+      [highlightedCommentPath]="highlightedCommentPaths[index]"
+      (onPathHover)="setHighlightedCommentPath($event)"
+      (onPathLeave)="resetHighlightedCommentPath()"
+      (onCollapseClick)="collapseTree($event)"
+      (onCommentAdded)="addComment($event)"
+    ></app-comment>
+  </ng-container>
+</div>

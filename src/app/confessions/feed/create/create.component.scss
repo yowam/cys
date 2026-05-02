@@ -1,0 +1,36 @@
+@import '../../../styles/variables';
+
+:host {
+
+  .card {
+    display: flex;
+    padding-top: 0.8em;
+    padding-bottom: 0.8em;
+  }
+
+  .input-container {
+    flex: 1 0 auto;
+  }
+
+  .create-input {
+    width: 100%;
+    font-size: 1.4em;
+    color: $font-colour-alt;
+    background-color: #272729;
+    border: 0.1rem solid $border-colour;
+    height: 100%;
+    text-align: left;
+    padding: 0 1rem;
+    border-radius: 0.4rem;
+    cursor: text;
+
+    &:hover,
+    &:focus {
+      border-color: #fff;
+    }
+  }
+
+  .button-group {
+    margin-left: 0.8em;
+  }
+}

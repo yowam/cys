@@ -1,0 +1,255 @@
+@import '../../../styles/variables.scss';
+
+:host {
+
+  .card {
+    padding-top: 0.8em;
+    padding-bottom: 0.8em;
+    transition: border-color 0.15s ease-in-out;
+    cursor: pointer;
+
+    &:hover:not(:has(.button-prevent:hover)),
+    &:focus:not(:has(.button-prevent:focus)) {
+      border-color: #fff;
+    }
+
+    &.card-highlight {
+      border-color: red !important;
+    }
+  }
+
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    color: $font-colour-alt;
+    margin: 0 0 0.8em;
+
+    p {
+      margin: 0;
+      font-size: 1.2em;
+    }
+  }
+
+  .card-header-active {
+
+    p {
+      color: #fff;
+    }
+  }
+
+  .likes {
+    margin: 0;
+    padding: 0;
+    cursor: default;
+
+    li {
+      font-size: 1.2em;
+      display: inline-block;
+      margin: 0 0.6em 0 0;
+    }
+
+    .material-icons {
+      display: inline-block;
+      font-size: 1.2em;
+      line-height: 1;
+      margin: 0 0.3em 0 0;
+    }
+
+    span {
+      vertical-align: middle;
+    }
+  }
+
+  .card-body {
+    margin: 0 0 0.8em;
+  }
+
+  .card-content {
+
+    p {
+      font-size: 1.8em;
+      color: $button-font-colour;
+      display: -webkit-box;
+      -webkit-line-clamp: 6;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      white-space: pre-line;
+    }
+  }
+
+  .card-meta {
+    color: $font-colour-alt;
+
+    ul {
+      display: flex;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    li {
+      position: relative;
+      display: inline-block;
+      margin: 0 0.2em;
+    }
+
+    button {
+      color: inherit;
+    }
+
+    .material-icons {
+      font-size: 1.6em;
+    }
+
+    .card-meta-button-active {
+      color: #fff;
+    }
+  }
+
+  .meta-label {
+    display: inline-block;
+    margin: 0 0.3em;
+    font-size: 1.4em;
+  }
+
+  app-react-popout {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1;
+  }
+
+  .comment {
+    position: relative;
+    border: 0.1em solid $border-colour;
+    padding: 0.8em;
+    border-radius: 0.4em;
+    margin: 0 0em 0.8em 1.2em;
+    max-width: 50em;
+
+    &.comment-highlight {
+      border-color: red !important;
+    }
+
+    &::before {
+      border-bottom: 8px solid transparent;
+      border-right: 9px solid $body-colour-alt;
+      border-top: 8px solid transparent;
+      left: -9px;
+      top: 18px;
+      bottom: 0;
+      height: 0;
+      margin: auto;
+      position: absolute;
+      content: '';
+      z-index: 2;
+    }
+
+    &::after {
+      content: '';
+      border-bottom: 10px solid transparent;
+      border-right: 11px solid $border-colour;
+      border-top: 10px solid transparent;
+      left: -11px;
+      top: 18px;
+      bottom: 0;
+      height: 0;
+      margin: auto;
+      position: absolute;
+    }
+  }
+
+  .comment-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: $font-colour-alt;
+    margin: 0 0 0.4em;
+
+    .comment-meta p {
+      font-size: 1.2em;
+      margin: 0;
+      white-space: pre;
+    }
+
+    .comment-actions {
+
+      ul {
+        margin: 0;
+        padding: 0;
+        line-height: 0;
+      }
+
+      li {
+        display: inline-block;
+        margin-left: 0.8em;
+
+        button {
+          all: unset;
+          display: flex;
+          align-items: center;
+          height: 1.8em;
+          line-height: 1;
+          cursor: pointer;
+
+          &:hover,
+          &:focus {
+            color: #fff;
+          }
+        }
+
+        span {
+          font-size: 1.6em;
+          line-height: 0;
+        }
+      }
+    }
+  }
+
+  .comment-body {
+
+    p {
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      font-size: 1.4em;
+      color: $button-font-colour;
+      margin: 0;
+      white-space: pre-wrap;
+    }
+  }
+
+  .card-comments-action {
+    text-align: center;
+
+    button {
+      height: auto;
+      padding: 1em;
+    }
+
+    span {
+      font-size: 1.2em;
+      color: $font-colour-alt;
+
+      &:not(:last-child) {
+        margin-right: 0.4em;
+      }
+    }
+  }
+}
+
+.more-list {
+  margin: 0 -0.2em;
+  padding: 0;
+
+  li {
+    display: block;
+    margin: 0 0.2em 0;
+  }
+
+  button {
+    width: 100%;
+  }
+}
+

@@ -1,0 +1,29 @@
+<div class="confession">
+  <div class="container">
+    <app-item
+      [confession]="confessions[activeConfessionIndex]"
+    ></app-item>
+
+    <ng-container *ngIf="confessions[activeConfessionIndex].tags.length >= 5">
+      <p>Similar Confessions:</p>
+
+      <p *ngIf="isLoading" class="loading-more text-loading">Loading...</p>
+
+      <app-feed
+        *ngIf="!isLoading && confessions[activeConfessionIndex].similarConfessions"
+        [items]="confessions[activeConfessionIndex].similarConfessions || []"
+        [routerOutletActive]="false"
+        [routerOutletRef]="route.outlet === 'modal'"
+        (loadMoreConfessions)="loadMoreConfessions()"
+      ></app-feed>
+    </ng-container>
+
+     <p *ngIf="isLoadingMore" class="loading-more text-loading">Loading More...</p>
+  </div>
+
+  <aside class="side">
+    <app-sidebar
+      [showSuicidePreventionMessage]="showSuicidePreventionMessage"
+    ></app-sidebar>
+  </aside>
+</div>

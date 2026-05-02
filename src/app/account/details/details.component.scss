@@ -1,0 +1,54 @@
+@import '../../styles/variables.scss';
+
+:host {
+  dd,dt {
+    font-size: 1.6em;
+  }
+
+  dd {
+    color: $font-colour-alt;
+    margin-bottom: 1em;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  dt {
+    margin-bottom: 0.4em;
+  }
+
+  .return-message {
+    display: flex;
+    align-items: center;
+    font-size: 1em;
+    margin: 0;
+    height: 3.2rem;
+  }
+
+  form {
+    height: 3.2rem;
+    display: flex;
+    align-items: center;
+  }
+
+  input {
+    padding: 0.3rem;
+    border-top-left-radius: 0.3rem;
+    border-bottom-left-radius: 0.3rem;
+    border: 1px solid $border-colour;
+
+    & + button {
+      border-top-right-radius: 0.3rem;
+      border-bottom-right-radius: 0.3rem;
+      border: 1px solid $border-colour;
+      border-left-width: 0;
+      padding: 0.3rem 0.8rem;
+      cursor: pointer;
+
+      &:disabled {
+        cursor: not-allowed;
+      }
+    }
+  }
+}

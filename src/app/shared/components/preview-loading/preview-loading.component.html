@@ -1,0 +1,35 @@
+<ng-container *ngFor="let randomNumber of randomArray">
+  <div class="card">
+    <div class="card-header">
+      <div class="card-header-left">
+        <span></span>
+      </div>
+      <div class="card-header-right">
+        <span></span>
+      </div>
+    </div>
+
+    <div class="card-body">
+      <div class="card-content">
+        <ng-container *ngFor="let item of randomNumber; let isLast = last">
+          <span [ngStyle]="{'width': isLast ? (item + '%') : '100%'}"></span>
+        </ng-container>
+      </div>
+      <div class="card-meta">
+        <ul>
+          <li>
+            <div class="button-fake"></div>
+          </li>
+          <li>
+            <div class="button-fake"></div>
+          </li>
+          <li>
+            <div class="button-fake"></div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card-footer"></div>
+  </div>
+</ng-container>

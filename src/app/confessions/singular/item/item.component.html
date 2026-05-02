@@ -1,0 +1,104 @@
+<div class="card" #card>
+  <div class="card-header">
+    <div class="card-header-left">
+      <p>Published: {{confession.createdAt ? (confession.createdAt | ago) : 'Unknown'}}</p>
+    </div>
+    <div class="card-header-right" [ngClass]="{'card-header-active': reaction}">
+      <p
+      >
+      <!-- tooltip="😍 1, 😂 2, 🤮 1, 🤬 1, 😨 0" -->
+        {{confession.likeCount || 0}} like<ng-container *ngIf="confession.likeCount !== 1">s</ng-container>
+      </p>
+    </div>
+  </div>
+
+  <div class="card-body">
+    <div class="card-content">
+      <p [innerHTML]="confession.body | wrapLine"></p>
+    </div>
+    <div class="card-meta">
+      <ul>
+        <li>
+          <button
+            #likeTrigger
+            class="button button-wide"
+            [ngClass]="{'card-meta-button-active': reaction}"
+            (click)="$event.preventDefault(); $event.stopPropagation()"
+            (mouseenter)="triggerReactMenu()"
+            (mouseleave)="triggerReactMenuHideCounter()"
+          >
+            <span class="material-icons">
+              thumb_up</span> <span class="meta-label">{{reaction ? 'Liked': 'Like'}}
+            </span>
+          </button>
+          <app-react-popout
+            *ngIf="showReactPopout"
+            (mouseenter)="triggerReactMenu()"
+            (mouseleave)="triggerReactMenuHideCounter()"
+            [confessionId]="confession.id"
+            [reaction]="reaction"
+            [isReacting]="isReacting"
+            (onReactionChange)="updateReaction($event)"
+            (onInteraction)="isReacting = $event"
+            (clickOutside)="! isReacting && showReactPopout = false"
+          ></app-react-popout>
+        </li>
+        <li>
+          <button (click)="openShareDialog()" class="button button-wide">
+            <span class="material-icons">share</span> <span class="meta-label">Share</span>
+          </button>
+        </li>
+        <li>
+          <button class="button" [cdkMenuTriggerFor]="more">
+            <span class="material-icons">more_horiz</span>
+          </button>
+        </li>
+      </ul>
+      <form #commentForm="ngForm" (submit)="postComment()">
+        <textarea
+          #commentInput
+          [(ngModel)]="comment"
+          class="comment-input"
+          placeholder="Care to comment?"
+          required="true"
+          name="comment"
+          maxlength="40000"
+        ></textarea>
+        <div class="button-group">
+          <button
+            class="comment-button"
+            type="submit"
+            [disabled]="!commentForm.valid || isSending"
+          ><span>{{isSending ? 'Sending' : 'Comment'}}</span></button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <hr *ngIf="confession.comments.length">
+
+  <div class="card-footer">
+    <app-comments
+      #comments
+      [comments]="confession.comments"
+      [activeComment]="activeComment"
+      [confessionId]="confession.id"
+    ></app-comments>
+  </div>
+</div>
+
+<ng-template #more>
+  <div class="card card-floating-light" cdkMenu>
+    <ul class="more-list">
+      <li>
+        <button
+          class="button button-wide"
+          (click)="openReportDialog()"
+          cdkMenuItem
+        >
+          <span class="material-icons">flag</span> <p>Report</p>
+        </button>
+      </li>
+    </ul>
+  </div>
+</ng-template>

@@ -1,0 +1,110 @@
+<div class="post">
+  <div class="container">
+    <div class="container-header">
+      <div class="container-header-left">
+        <h1>Post a Confession</h1>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <button class="header-tab"><span>Post</span></button>
+      </div>
+
+      <div class="card-body">
+        <form class="post-form" #postForm="ngForm" (submit)="postConfession()">
+          <textarea
+            [(ngModel)]="post"
+            class="post-input"
+            placeholder="Write your post"
+            name="post"
+            maxlength="40000"
+            required
+          ></textarea>
+          <!-- <p class="tag-helper-text">Optional; add tags to help your visibilty in search results (Maximum 3 tags)</p>
+          <ul class="post-tags">
+            <li>
+              <span
+                *ngIf="tags.length !== 3"
+                class="post-tag"
+                tooltip="Add tags to improve visibility in search results"
+              >
+                <span class="material-icons">label</span>
+                <input
+                  [(ngModel)]="tagInput"
+                  name="tag"
+                  type="text"
+                  placeholder="Add tag"
+                  (keydown.enter)="addTag(tagInput)"
+                >
+                <button
+                  *ngIf="tagInput.length"
+                  [disabled]="!tagInput.length || tagInput.length > 100"
+                  (click)="addTag(tagInput)"
+                >
+                  <span class="material-icons">add_circle</span>
+                </button>
+              </span>
+            </li>
+            <li *ngFor="let tag of tags">
+              <span class="post-tag">
+                <span class="material-icons">label</span>
+                <span class="post-tag-label">{{tag}}</span>
+                <button (click)="removeTag(tag)">
+                  <span class="material-icons">cancel</span>
+                </button>
+              </span>
+            </li>
+          </ul> -->
+          <div class="button-group">
+            <button
+              class="post-button"
+              type="submit"
+              [disabled]="!postForm.valid || isSending"
+            ><span>{{isSending ? 'Sending' : 'Post'}}</span></button>
+          </div>
+        </form>
+      </div>
+
+      <div class="card-footer">
+        <p><em>*Url addresses, email addresses, phone numbers, usernames and hashes are forbidden. </em>
+          <!-- <span class="material-icons" tooltip="As this is an anonymous site we don't verify users are who they say they are. So any username or contact info is removed as potential impersonation, doxxing or advertising rule violations depending on the context.">help</span> -->
+        </p>
+        <!-- <app-checkbox
+          label="Preview post"
+          [(ngModel)]="preview"
+        ></app-checkbox>
+        <div class="post-preview">
+          <p *ngIf="preview">{{post}}</p>
+        </div> -->
+      </div>
+    </div>
+  </div>
+
+  <aside class="post-aside">
+    <div class="card">
+      <h2 class="post-aside-title">Rules of Posting:</h2>
+      <ul>
+        <li><p>Posts must be a confession</p></li>
+        <li><p>No hate speech</p></li>
+        <li><p>No doxxing</p></li>
+        <li><p>No child exploitation</p></li>
+        <li><p>No animal abuse</p></li>
+        <li><p>No crowdfunding, donations, or self-advertisement</p></li>
+        <li><p>No impersonation</p></li>
+        <li><p>No violence and threats (Including sexual violence)</p></li>
+        <li><p>Moderators reserve the right to remove content they deem harmful</p></li>
+        <li><p><u>You must be over 18 years old to post</u></p></li>
+      </ul>
+    </div>
+    <div class="aside-meta">
+      <p>
+        For further details on our rules and policies
+      </p>&nbsp;<a
+        href="javascript:;"
+        routerLink="/policies"
+        routerLinkActive="menu-item-active">
+        click here
+      </a>
+    </div>
+  </aside>
+</div>

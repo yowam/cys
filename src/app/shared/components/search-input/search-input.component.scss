@@ -1,0 +1,59 @@
+@import '../../../styles/variables.scss';
+
+:host {
+
+  .search-input-container {
+    display: flex;
+    align-items: center;
+    height: 3.8em;
+    background-color: #272729;
+    border: 1px solid $border-colour;
+    border-radius: 2em;
+    max-width: 80em;
+    margin: 0 auto;
+
+    &-active {
+      border-color: #fff;
+    }
+  }
+
+  .search-label {
+    visibility: hidden;
+    font-size: 0;
+  }
+
+  .search-input {
+    flex: 1 0 auto;
+    background-color: transparent;
+    outline-width: 0;
+    border-width: 0;
+    font-size: 1.4em;
+    line-height: 1;
+    color: #fff;
+
+    &::placeholder {
+      color: $font-colour-alt;
+    }
+
+    & + .search-input-icon {
+      margin: 0 1.5em 0 0.9em;
+    }
+  }
+
+  .search-input-icon {
+    all: unset;
+    flex: 0 0 2em;
+    margin: 0 0.9em 0 1.5em;
+    line-height: 0;
+    cursor: pointer;
+
+    &.search-input-icon-actionless {
+      cursor: auto;
+    }
+
+    span {
+      font-size: 2em;
+      color: $font-colour-alt;
+    }
+  }
+}

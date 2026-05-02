@@ -1,0 +1,37 @@
+@import '../../styles/variables.scss';
+
+:host {
+  width: 100%;
+
+  .confession {
+    display: flex;
+  }
+
+  .container {
+    flex: 1 1 auto;
+    max-width: 100%;
+    // min-height: calc(100vh - $navbar-height - 3.6em + 1px); // 3.6 is margin from .app-container
+  }
+
+  .side {
+    position: fixed;
+    right: 0;
+
+    @media (min-width: 768px) {
+      position: static;
+      flex: 0 0 35em;
+    }
+  }
+
+  .confession-aditional-header {
+    text-align: center;
+    margin: 60px 0;
+  }
+
+  .loading-more {
+    line-height: 6em;
+    text-align: center;
+    height: 6em;
+    margin: 0;
+  }
+}

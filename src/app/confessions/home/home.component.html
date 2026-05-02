@@ -1,0 +1,47 @@
+<div [hidden]="! modal.isActivated" class="overlap">
+  <div class="home">
+    <router-outlet name="modal" #modal="outlet"></router-outlet>
+  </div>
+</div>
+
+<div [hidden]="modal.isActivated" class="home" [ngClass]="{'home-loading': isLoading}">
+  <div class="container">
+    <app-create></app-create>
+    <app-filters
+      *ngIf="!(searchedTerm || searchedTag)"
+      [tagsEnabled]="true"
+      [trendingEnabled]="true"
+      [bestActive]="[Sort.BestMonth, Sort.BestYear].includes(sort) && sort"
+      [newestActive]="sort === Sort.Newest"
+      [trendingActive]="sort === Sort.Trending"
+      (onNewestClicked)="sort = Sort.Newest; sortNewConfessions()"
+      (onBestClicked)="sort = $event; sortNewConfessions()"
+      (onTrendingClicked)="sort = Sort.Trending; sortNewConfessions()"
+    ></app-filters>
+    <h2 *ngIf="searchedTerm">Results for: "{{searchedTerm}}"</h2>
+    <h2 *ngIf="searchedTag">Results for tag: "{{searchedTag}}"</h2>
+
+    <div *ngIf="isLoading && ! hasErrored">
+      <app-preview-loading></app-preview-loading>
+    </div>
+
+    <p class="feed-error" *ngIf="hasErrored">
+      <span class="feed-error-icon">(˚Δ˚)b</span>
+      Error getting confessions. Try refreshing.
+    </p>
+
+    <app-feed
+      *ngIf="! isLoading || ! hasErrored"
+      [items]="confessions"
+      [routerOutletRef]="modal"
+      [routerOutletActive]="modal.isActivated"
+      (loadMoreConfessions)="loadMoreConfessions()"
+    ></app-feed>
+
+    <p *ngIf="isLoadingMore" class="loading-more text-loading">Loading More...</p>
+  </div>
+
+  <aside class="side">
+    <app-sidebar></app-sidebar>
+  </aside>
+</div>

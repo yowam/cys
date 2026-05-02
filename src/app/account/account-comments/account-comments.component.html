@@ -1,0 +1,32 @@
+<app-filters
+  [tagsEnabled]="false"
+  [trendingEnabled]="false"
+></app-filters>
+
+<div *ngFor="let comment of userComments">
+
+  <a
+    href="javascript:;"
+    class="comment-wrap"
+    [routerLink]="'/confessions/' + comment.confession?.id + '/' + comment.confession?.slug"
+    [fragment]="comment.id"
+  >
+    <div class="comment">
+      <div class="comment-header">
+        <div class="comment-meta">
+          <p>Published: {{ comment.createdAt | date: 'd MMM HH:mm' }}</p>
+        </div>
+      </div>
+      <div class="comment-body">
+        <p [innerHTML]="comment.body | wrapLine"></p>
+      </div>
+    </div>
+  </a>
+
+</div>
+
+<button
+  *ngIf="! endOfComments"
+  (click)="loadMore()"
+  class="button button-wide account-more-button"
+>Load More</button>

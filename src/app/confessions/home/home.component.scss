@@ -1,0 +1,50 @@
+@import '../../styles/variables.scss';
+
+:host {
+
+  .home {
+    display: flex;
+  }
+
+  .container {
+    flex: 1 1 auto;
+    min-height: 101vh; // infinite scroll won't work if container is smaller than screen length
+  }
+
+  .side {
+    position: fixed;
+    right: 0;
+
+    @media (min-width: 768px) {
+      position: static;
+      flex: 0 0 35em;
+    }
+  }
+
+  app-feed {
+    margin-bottom: 6em;
+  }
+
+  .loading-more {
+    line-height: 6em;
+    text-align: center;
+    height: 6em;
+    margin: 0;
+  }
+
+  .feed-error {
+    text-align: center;
+
+    &-icon {
+      display: block;
+      font-size: 4em;
+      line-height: 2em;
+    }
+  }
+}
+
+.overlap {
+  background-color: $body-colour;
+  // overflow: auto;
+  overscroll-behavior: auto;
+}

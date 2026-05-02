@@ -1,0 +1,56 @@
+@import '../../styles/variables.scss';
+
+:host {
+
+  ol {
+    padding-left: 3em;
+  }
+
+  li {
+    margin-bottom: 4em;
+
+    &::marker {
+      font-size: 1.8em;
+    }
+  }
+
+  p {
+    font-size: 1.4em;
+
+    a {
+      color: inherit;
+    }
+  }
+
+  h1 {
+    margin-bottom: 1em;
+    padding-bottom: 1em;
+    border-bottom: 1px solid $border-colour;
+  }
+
+  .title {
+    font-size: 1.8em;
+  }
+
+  .warning {
+    color: yellow;
+  }
+
+  h3 {
+    font-size: 1em;
+    letter-spacing: .5px;
+    text-transform: uppercase;
+    border-bottom: 1px solid $border-colour;
+    color: $font-colour-alt;
+    margin-bottom: 2em;
+    padding-bottom: 0.6em;
+  }
+
+  .warning {
+    padding: 0.75em 1.25em;
+    margin-bottom: 1rem;
+    background-color: #856404;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+  }
+}

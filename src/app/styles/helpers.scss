@@ -1,0 +1,17 @@
+.text-center {
+  text-align: center;
+}
+
+.card {
+
+  .comment-body p span,
+  .card-content p span {
+    color: #6abf68;
+  }
+
+  .comment-body p em,
+  .card-content p em {
+    color: #e86f1d;
+    font-style: normal;
+  }
+}

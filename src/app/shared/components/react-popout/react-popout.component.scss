@@ -1,0 +1,38 @@
+@import '../../../styles/variables.scss';
+
+:host {
+  position: relative;
+
+  .react-list {
+    display: flex;
+    margin: 0 -0.2em;
+    padding: 0;
+    background-color: $body-colour-alt;
+
+    li {
+      display: block;
+      margin: 0 0.2em 0;
+    }
+
+    .button {
+      height: 3.4em;
+      font-size: 1.6em;
+      width: 3.4em;
+    }
+  }
+
+  .reaction-inactive {
+    opacity: 0.2;
+  }
+
+  .overlay {
+    font-size: 1.8em;
+    color: #fff;
+    position: absolute;
+    text-align: center;
+    top: 0.4em;
+    left: 0;
+    width: 100%;
+  }
+
+}

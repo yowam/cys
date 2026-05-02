@@ -1,0 +1,116 @@
+@import '../../styles/variables.scss';
+
+:host {
+
+  .button-notification-action {
+    font-size: 1.4em;
+    padding: 0 1rem;
+    height: 30px;
+    margin: 0 0 10px;
+  }
+
+  .notification-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    flex: 1 0 auto;
+    position: relative;
+    text-decoration: none;
+
+    &:focus,
+    &:hover {
+
+      .notification {
+        border-color: #fff;
+      }
+    }
+  }
+
+  .notification {
+    flex: 1 0 auto;
+    width: 0;
+    background-color: $body-colour-alt;
+    border: 0.1em solid $border-colour;
+    padding: 0.8em;
+    border-radius: 0.4em;
+    margin: 0 0 0.8em;
+  }
+
+
+  .notification-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: $font-colour-alt;
+    margin: 0 0 0.4em;
+
+    .notification-meta {
+      display: flex;
+      align-items: center;
+
+      p {
+        font-size: 1.2em;
+        margin: 0;
+        white-space: pre;
+      }
+    }
+
+    .notification-actions {
+
+      ul {
+        margin: 0;
+        padding: 0;
+        line-height: 0;
+      }
+
+      li {
+        display: inline-block;
+        margin-left: 0.8em;
+
+        button {
+          all: unset;
+          display: flex;
+          align-items: center;
+          height: 1.8em;
+          line-height: 1;
+          cursor: pointer;
+
+          &:hover,
+          &:focus {
+            color: #fff;
+          }
+        }
+
+        span {
+          font-size: 1.6em;
+          line-height: 0;
+        }
+      }
+    }
+  }
+
+  .notification-unread {
+    display: inline-block;
+    height: 1em;
+    width: 1em;
+    border-radius: 50%;
+    background-color: #fff;
+    margin: 0 0.6em 0 0;
+  }
+
+  .notification-body {
+
+    p {
+      font-size: 1.4em;
+      color: $button-font-colour;
+      margin: 0;
+    }
+  }
+
+  .account-more-button {
+    display: block;
+    font-size: 1.6em;
+    padding: 0 2em;
+    margin: 0 auto;
+  }
+
+}

@@ -1,0 +1,40 @@
+<div class="about">
+  <nav class="sub-nav">
+    <ul class="card">
+      <li>
+        <a
+          href="javascript:;"
+          routerLink="user-agreement"
+          routerLinkActive="menu-item-active"
+        >User Agreement</a>
+      </li>
+      <li>
+        <a
+          href="javascript:;"
+          routerLink="privacy-policy"
+          routerLinkActive="menu-item-active"
+        >Privacy Policy</a>
+      </li>
+      <li>
+        <a
+          href="javascript:;"
+          routerLink="content-policy"
+          routerLinkActive="menu-item-active"
+        >Content Policy</a>
+      </li>
+      <li>
+        <a
+          href="javascript:;"
+          routerLink="moderator-code-of-conduct"
+          routerLinkActive="menu-item-active"
+        >Moderator Code Of Conduct</a>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <div class="card">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

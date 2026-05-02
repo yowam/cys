@@ -1,0 +1,65 @@
+<div class="card card-floating-light" cdkMenu>
+  <ul class="react-list" [style.visibility]="isReacting ? 'hidden' : 'visibility'">
+    <li>
+      <button
+        [ngClass]="{'reaction-inactive': reaction && reaction.type !== ReactionType.LIKE}"
+        (click)="react(ReactionType.LIKE)"
+        class="button"
+        cdkMenuItem
+      >
+        <span>👍</span>
+      </button>
+    </li>
+    <li>
+      <button
+        [ngClass]="{'reaction-inactive': reaction && reaction.type !== ReactionType.LOVE}"
+        (click)="react(ReactionType.LOVE)"
+        class="button"
+        cdkMenuItem
+      >
+        <span>😍</span>
+      </button>
+    </li>
+    <li>
+      <button
+        [ngClass]="{'reaction-inactive': reaction && reaction.type !== ReactionType.HAHA}"
+        (click)="react(ReactionType.HAHA)"
+        class="button"
+        cdkMenuItem
+      >
+        <span>😂</span>
+      </button>
+    </li>
+    <li>
+      <button
+        [ngClass]="{'reaction-inactive': reaction && reaction.type !== ReactionType.WOW}"
+        (click)="react(ReactionType.WOW)"
+        class="button"
+        cdkMenuItem
+      >
+        <span>🤮</span>
+      </button>
+    </li>
+    <li>
+      <button
+        [ngClass]="{'reaction-inactive': reaction && reaction.type !== ReactionType.ANGRY}"
+        (click)="react(ReactionType.ANGRY)"
+        class="button"
+        cdkMenuItem
+      >
+        <span>🤬</span>
+      </button>
+    </li>
+    <li>
+      <button
+        [ngClass]="{'reaction-inactive': reaction && reaction.type !== ReactionType.SAD}"
+        (click)="react(ReactionType.SAD)"
+        class="button"
+        cdkMenuItem
+      >
+        <span>😨</span>
+      </button>
+    </li>
+  </ul>
+  <p *ngIf="isReacting" class="overlay">Reacting...</p>
+</div>

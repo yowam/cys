@@ -1,0 +1,210 @@
+@import '../../../styles/variables.scss';
+
+:host {
+
+  hr {
+    border-color: $border-colour;
+  }
+
+  .card {
+    padding-top: 0.8em;
+    padding-bottom: 0.8em;
+  }
+
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    color: $font-colour-alt;
+    margin: 0 0 0.8em;
+
+    p {
+      margin: 0;
+      font-size: 1.2em;
+    }
+  }
+
+  .card-header-active {
+
+    p {
+      color: #fff;
+    }
+  }
+
+  .likes {
+    margin: 0;
+    padding: 0;
+    cursor: default;
+
+    li {
+      font-size: 1.2em;
+      display: inline-block;
+      margin: 0 0.6em 0 0;
+    }
+
+    .material-icons {
+      display: inline-block;
+      font-size: 1.2em;
+      line-height: 1;
+      margin: 0 0.3em 0 0;
+    }
+
+    span {
+      vertical-align: middle;
+    }
+  }
+
+  .card-body {
+    margin: 0 0 0.8em;
+  }
+
+  .card-content {
+    display: flex;
+    align-items: center;
+    margin: 0 1.6em;
+    min-height: 18em;
+
+    p {
+      font-size: 1.8em;
+      color: $button-font-colour;
+      overflow: hidden;
+      white-space: pre-line;
+    }
+  }
+
+  .card-meta {
+    color: $font-colour-alt;
+
+    ul {
+      display: flex;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    li {
+      position: relative;
+      display: inline-block;
+      margin: 0 0.2em;
+    }
+
+    p {
+      margin: 0;
+      font-size: 1.2em;
+    }
+
+    button {
+      color: inherit;
+    }
+
+    .material-icons {
+      font-size: 1.6em;
+    }
+
+    .card-meta-button-active {
+      color: #fff;
+    }
+  }
+
+  .meta-label {
+    display: inline-block;
+    margin: 0 0.3em;
+    font-size: 1.4em;
+  }
+
+  app-react-popout {
+    position: absolute;
+    top: 100%;
+    left: 0;
+  }
+
+  .comment-input {
+    background-color: $body-colour-alt;
+    border: 1px solid $border-colour;
+    border-radius: 4px;
+    font-size: 1.4em;
+    width: 100%;
+    height: auto;
+    min-height: 140px;
+    padding: 8px 16px;
+    box-sizing: border-box;
+    color: #fff;
+    outline-width: 0;
+    margin: 1em 0 0.6em;
+
+    &::placeholder {
+      color: $font-colour-alt;
+    }
+
+    &:focus {
+      border-color: $button-font-colour;
+      outline: 0;
+    }
+  }
+
+  .button-group {
+    text-align: right;
+  }
+
+  .comment-button {
+    display: inline-block;
+    border-width: 0;
+    background-color: $button-font-colour;
+    color: $body-colour-alt;
+    border: 0.1em solid $button-font-colour;
+    border-radius: 2em;
+    height: 3.2em;
+    min-width: 6.5em;
+    padding: 0 1.6em;
+    cursor: pointer;
+    transition: background-color 0.15s ease-in-out;
+
+    &:hover,
+    &:focus {
+      background-color: #fff;
+      border-color: #fff;
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
+
+    span {
+      font-size: 1.6em;
+      line-height: 1;
+      color: $body-colour-alt;
+    }
+  }
+}
+
+.more-list {
+  margin: 0 -0.2em;
+  padding: 0;
+
+  li {
+    display: block;
+    margin: 0 0.2em 0;
+  }
+
+  button {
+    width: 100%;
+  }
+}
+
+.react-list {
+  display: flex;
+  margin: 0 -0.2em;
+  padding: 0;
+  background-color: $body-colour-alt;
+
+  li {
+    display: block;
+    margin: 0 0.2em 0;
+  }
+
+  .button {
+    height: 3.4em;
+    font-size: 1.6em;
+    width: 3.4em;
+  }
+}

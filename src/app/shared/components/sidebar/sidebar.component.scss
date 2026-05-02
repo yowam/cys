@@ -1,0 +1,160 @@
+@import '../../../styles/variables.scss';
+
+:host {
+
+  .fix-to-top {
+
+    @media (min-width: 768px) {
+      position: fixed;
+      top: $navbar-height + 2em;
+      width: 32.6em;
+    }
+  }
+
+  .hover-wrap {
+    max-height: calc(100vh - ($navbar-height + 2em));
+    overflow: auto;
+  }
+
+  .card {
+
+    p {
+      display: block;
+      font-size: 1.4em;
+      margin: 0;
+
+      & ~ p {
+        margin-top: 0.6em;
+      }
+    }
+
+    &-helpline {
+      background-color: #055052;
+      color: #d1e9e7;
+      border-color: #d1e9e7;
+
+      .card-footer {
+        border-color: #d1e9e7;
+      }
+    }
+  }
+
+  .cta {
+    display: block;
+    width: 100%;
+    margin: 0 0 1em;
+    border-width: 0;
+    border-radius: 2em;
+    padding: 0.8em;
+    transition: color 0.15s ease-in-out;
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+      background-color: #fff;
+    }
+
+    span {
+      font-size: 1.4em;
+    }
+
+    &:last-child {
+      margin: 0;
+    }
+  }
+
+  .card-footer {
+    margin-top: 0.6em;
+    padding-top: 1em;
+    border-top: 0.1em solid $border-colour;
+
+    p {
+      margin: 0;
+      font-size: 1.2em;
+
+      a {
+        font-size: 1em;
+      }
+    }
+
+    a {
+      display: inline-block;
+      color: $button-font-colour;
+      text-decoration: none;
+      font-size: 1.2em;
+      margin: 0 0 0.3em;
+
+      &:hover,
+      &:focus {
+        text-decoration: underline;
+      }
+    }
+
+    .material-icons {
+      font-size: 1.2em;
+      vertical-align: bottom;
+    }
+  }
+
+  .sidebar {
+    display: none;
+    margin-left: 2.4em;
+
+    @media (min-width: 768px) {
+      display: block;
+    }
+  }
+
+  .sidenav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100%;
+    max-width: 100%;
+    width: 40em;
+    background-color: $body-colour-alt;
+    border-left: 0.1em solid $border-colour;
+    transform: translate3d(40em, 0, 0);
+    transition: transform 0.5s ease;
+
+    &-active {
+      transform: translate3d(0, 0, 0);
+    }
+
+    @media (min-width: 768px) {
+      display: none;
+    }
+  }
+
+  .sidebar-action {
+
+    // @media (min-width: 768px) {
+      display: none;
+    // }
+  }
+
+  .link-list {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+
+    li {
+      display: block;
+      flex: 1 0 50%;
+    }
+
+    a {
+      display: inline-block;
+      color: $button-font-colour;
+      margin: 0 0 0.4em;
+      font-size: 1.2em;
+      text-decoration: none;
+
+      &:hover,
+      &:focus {
+        text-decoration: underline;
+      }
+    }
+  }
+}

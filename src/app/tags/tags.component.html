@@ -1,0 +1,46 @@
+<div class="tags">
+  <div class="container">
+    <div class="container-header">
+      <h1 class="container-title">Tags</h1>
+      <app-filters
+        [tagsEnabled]="true"
+        [trendingEnabled]="true"
+        [newestActive]="false"
+        [trendingActive]="false"
+        (onNewestClicked)="newestClicked()"
+        (onTrendingClicked)="trendingClicked()"
+      ></app-filters>
+    </div>
+    <div class="card">
+      <h2>Trending tags:</h2>
+      <ul *ngIf="isLoading" class="bullets">
+        <li *ngFor="let i of trendingTagsPlaceholders">
+          <span class="bullet bullet-empty" [style.width.px]="i"></span>
+        </li>
+      </ul>
+      <ul *ngIf="!isLoading" class="bullets">
+        <li *ngFor="let tag of trendingTags">
+          <a class="bullet" [routerLink]="['/search']" [queryParams]="{tag: tag}">{{tag}}</a>
+        </li>
+      </ul>
+
+      <hr>
+
+      <h2>Most popular tags:</h2>
+      <ul *ngIf="isLoading" class="bullets">
+        <li *ngFor="let i of topTagsPlaceholders">
+          <span class="bullet bullet-empty" [style.width.px]="i"></span>
+        </li>
+      </ul>
+      <ul *ngIf="!isLoading" class="bullets">
+        <li *ngFor="let tag of topTags">
+          <a class="bullet" [routerLink]="['/search']" [queryParams]="{tag: tag}">{{tag}}</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <aside class="side">
+    <app-sidebar></app-sidebar>
+  </aside>
+</div>

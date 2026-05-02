@@ -1,0 +1,21 @@
+@import '../../../styles/variables.scss';
+
+:host {
+  display: block;
+  max-width: 12rem;
+  padding: 0.2em 0.6em;
+  font-size: 0.85rem;
+  color: $button-font-colour;
+  background: #000;
+  border-radius: 0.4rem;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+:host-context(.top) {
+  margin-bottom: 0.2rem;
+}
+
+:host-context(.bottom) {
+  margin-top: 0.2rem;
+}

@@ -1,0 +1,16 @@
+@import '../../../styles/variables.scss';
+
+:host {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+
+  .card-comments {
+    position: relative;
+  }
+
+  .comment-anchor {
+    position: absolute;
+    top: -($navbar-height + 2em);
+  }
+}

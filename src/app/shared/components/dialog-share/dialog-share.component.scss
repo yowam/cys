@@ -1,0 +1,59 @@
+@import '../../../styles/variables.scss';
+
+:host {
+
+  .card {
+    width: 54.8em;
+    max-width: 90%;
+    margin: 0 auto;
+  }
+
+  .dialog-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 0 1em;
+
+    h2 {
+      flex: 1 0 auto;
+      text-align: center;
+      padding-left: 40px;
+    }
+  }
+
+  .dialog-body {
+    color: $button-font-colour;
+  }
+
+  .share-list {
+    text-align: center;
+    padding: 0 0 1.6em;
+    margin: 2.6em 0 1.6em;
+
+    svg {
+      fill: #fff;
+    }
+
+    li {
+      display: inline-block;
+      max-width: 35em;
+      margin: 0 2em 0 0;
+
+      &:last-child {
+        margin: 0;
+      }
+    }
+
+    .button-share {
+      padding: 0 10px;
+      font-size: 1.4em;
+      height: 45px;
+      margin: 0 0 6px;
+
+      .button-share-label {
+        font-size: 1em;
+        margin: 0 0 0 6px;
+      }
+    }
+  }
+}

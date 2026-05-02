@@ -1,0 +1,17 @@
+:host {
+
+  ol {
+    padding-left: 2em;
+  }
+
+  li {
+
+    &::marker {
+      font-size: 1.4em;
+    }
+  }
+
+  p {
+    font-size: 1.4em;
+  }
+}

@@ -1,0 +1,253 @@
+@import '../styles/variables.scss';
+
+:host {
+
+  .post {
+    display: flex;
+    flex-wrap: wrap;
+    color: $button-font-colour;
+
+    @media (min-width: 768px) {
+      flex-wrap: nowrap;
+    }
+  }
+
+  .container {
+    flex: 1 1 auto;
+  }
+
+  .container-header {
+    border-bottom: 0.1em solid $border-colour;
+    margin-bottom: 2em;
+  }
+
+  .post-aside {
+    flex: 0 0 100%;
+    margin: 0 0 1.6em 0;
+
+    @media (min-width: 768px) {
+      margin: 0 0 0 2.4em;
+      flex: 0 0 31.5em;
+    }
+
+    ul {
+      padding-left: 2em;
+      margin-bottom: 1.6em;
+    }
+
+    li {
+      margin: 0 0 1em;
+
+      &::marker {
+        font-size: 1.4em;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    p {
+      margin: 0;
+
+      & > a {
+        font-size: 1em;
+      }
+    }
+
+    a {
+      font-size: 1.4em;
+      color: $button-font-colour;
+    }
+  }
+
+  .aside-meta {
+
+    p,
+    a {
+      font-size: 1.2em;
+      display: inline-block;
+      color: $font-colour-alt;
+    }
+  }
+
+  .post-aside-title {
+    margin-top: 0;
+  }
+
+  .menu-item-active {
+    text-decoration: none;
+  }
+
+  .card {
+    border-width: 0;
+  }
+
+  .card-header {
+    border-bottom: 0.1em solid $border-colour;
+    margin: -1.2em -1.2em 1.2em;
+  }
+
+  .header-tab {
+    padding: 1.5em 1.7em;
+    border-width: 0;
+    background-color: transparent;
+    min-width: 17.5em;
+    border-right: 0.1em solid $border-colour;
+
+    span {
+      font-size: 1.4em;
+      color: $button-font-colour;
+    }
+  }
+
+  .card-body {
+    margin: 0 0 1.6em;
+  }
+
+  .post-form {
+    width: 100%;
+  }
+
+  .post-input {
+    background-color: $body-colour-alt;
+    border: 1px solid $border-colour;
+    border-radius: 4px;
+    font-size: 1.4em;
+    line-height: 1.4em;
+    width: 100%;
+    height: auto;
+    min-height: 210px;
+    padding: 8px 16px;
+    box-sizing: border-box;
+    color: #fff;
+    outline-width: 0;
+    margin: 0 0 1.6em;
+
+    &::placeholder {
+      color: $font-colour-alt;
+    }
+  }
+
+  .post-tags {
+    border-bottom: 0.1em solid $border-colour;
+    padding: 0 0 1.6em;
+    margin: 0 0 1.6em;
+
+    li {
+      display: inline-block;
+      max-width: 35em;
+    }
+  }
+
+  .post-tag {
+    display: flex;
+    align-items: center;
+    height: 3em;
+    padding: 0 1.6em 0 1em;
+    border-radius: 2em;
+    border: 0.1em solid $button-font-colour;
+    margin: 0 0.6em 0.6em 0;
+
+    button {
+      all: unset;
+      transition: color 0.15s ease-in-out;
+      cursor: pointer;
+      font-size: 1.4em;
+      margin: 0 -1em 0 0.4em;
+
+      &:hover:not(:disabled),
+      &:focus:not(:disabled) {
+        color: #fff;
+      }
+
+      &:disabled {
+        cursor: not-allowed;
+        opacity: 0.6;
+      }
+    }
+
+    input {
+      background-color: transparent;
+      border-width: 0;
+      font-size: 1.4em;
+      outline-width: 0;
+      color: #fff;
+
+      &::placeholder {
+        font-size: 12px;
+        color: $button-font-colour;
+      }
+    }
+  }
+
+  .material-icons {
+    display: block;
+    margin: 0 0.3em 0 0;
+    font-size: 1.2em;
+  }
+
+  .post-tag-label {
+    color: $button-font-colour;
+    font-size: 1.4em;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+
+  .button-group {
+    text-align: right;
+    margin-bottom: 1em;
+  }
+
+  .post-button {
+    display: inline-block;
+    border-width: 0;
+    background-color: $button-font-colour;
+    color: $body-colour-alt;
+    border: 0.1em solid $button-font-colour;
+    border-radius: 2em;
+    height: 3.2em;
+    min-width: 6.5em;
+    padding: 0 1.6em;
+    cursor: pointer;
+    transition: background-color 0.15s ease-in-out;
+
+    &:hover,
+    &:focus {
+      background-color: #fff;
+      border-color: #fff;
+    }
+
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    &-alt {
+      background-color: $body-colour-alt;
+      color: $button-font-colour;
+      border: 0.1em solid $button-font-colour;
+
+      &:hover,
+      &:focus {
+        background-color: $body-colour-accent;
+      }
+    }
+
+    span {
+      font-size: 1.6em;
+      line-height: 1;
+    }
+  }
+
+  .card-footer {
+    border-bottom: 0.1em solid $border-colour;
+    margin: 0 -1.2em -1.2em;
+    padding: 1.6em;
+    background-color: #272729;
+    border-bottom-left-radius: 0.4em;
+    border-bottom-right-radius: 0.4em;
+  }
+}

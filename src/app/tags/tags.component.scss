@@ -1,0 +1,100 @@
+@import '../styles/variables.scss';
+
+:host {
+
+  .tags {
+    display: flex;
+  }
+
+  .container {
+    flex: 1 1 auto;
+    min-height: 101vh; // infinite scroll won't work if container is smaller than screen length
+  }
+
+  .side {
+    position: fixed;
+    right: 0;
+
+    @media (min-width: 768px) {
+      position: static;
+      flex: 0 0 35em;
+    }
+  }
+
+  .container-title {
+    display: flex;
+    align-items: center;
+    height: 58px;
+    margin: 0 0 16px;
+  }
+
+  .card {
+    border-width: 0;
+
+    h1 {
+      margin: 20px 0;
+    }
+  }
+
+  .card-body {
+    margin: 0 0 1.6em;
+  }
+
+  .material-icons {
+    display: block;
+    margin: 0 0.3em 0 0;
+    font-size: 1.2em;
+  }
+
+  .bullets {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      display: inline-block;
+      margin: 0.4em 0.4em 0 0;
+    }
+
+    .bullet {
+      display: inline-block;
+      padding: 0 12px;
+      height: 40px;
+      line-height: 40px;
+      white-space: nowrap;
+      font-size: 16px;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      background-color: $button-hover-background-colour;
+      color: #fff;
+      border-radius: 4px;
+      text-decoration: none;
+      text-transform: capitalize;
+
+      &:hover {
+        background-color: #343536;
+      }
+
+      &-empty {
+        animation: span-loading 1s linear infinite alternate;
+      }
+    }
+  }
+
+  hr {
+    border-top: 1px solid #343536;
+    border-bottom: 0;
+    border-left: 0;
+    border-right: 0;
+    margin: 20px 0 30px;
+  }
+
+  @keyframes span-loading {
+    0% {
+      background-color: hsl(210, 1.89%, 20.78%)
+    }
+    100% {
+      background-color: hsl(210, 1.89%, 25%)
+    }
+  }
+}

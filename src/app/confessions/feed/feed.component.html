@@ -1,0 +1,17 @@
+<div
+  class="feed"
+  infiniteScroll
+  [infiniteScrollThrottle]="300"
+  [infiniteScrollDistance]="1"
+  (scrolled)="onScrolled()"
+  [infiniteScrollDisabled]="routerOutletActive"
+  [scrollWindow]="true"
+>
+  <ng-container *ngFor="let confession of items; trackBy: trackById">
+    <app-preview
+      [confession]="confession"
+      [isFeed]="!! routerOutletRef"
+      [reaction]="confession.reactions && confession.reactions[0]"
+    ></app-preview>
+  </ng-container>
+</div>

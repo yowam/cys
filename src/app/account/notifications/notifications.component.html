@@ -1,0 +1,49 @@
+<app-filters
+  [tagsEnabled]="false"
+  [trendingEnabled]="false"
+></app-filters>
+
+<button
+  class="button button-wide button-notification-action"
+  (click)="markAllAsRead()"
+>Mark all as read</button>
+
+<div *ngFor="let notification of userNotifications; let index = index">
+
+  <a
+    *ngIf="notificationParsedContent[index].confessionLink; else noLink"
+    class="notification-wrap"
+    [routerLink]="'/confessions/' + notificationParsedContent[index].confessionLink"
+    [fragment]="notificationParsedContent[index].commentId"
+  >
+    <ng-container *ngTemplateOutlet="notificationContent"></ng-container>
+  </a>
+
+  <ng-template #noLink>
+    <div class="notification-wrap">
+      <ng-container *ngTemplateOutlet="notificationContent"></ng-container>
+    </div>
+  </ng-template>
+
+  <!-- Reusable notification content -->
+  <ng-template #notificationContent>
+    <div class="notification">
+      <div class="notification-header">
+        <div class="notification-meta">
+          <span *ngIf="notification.isRead === false" class="notification-unread"></span>
+          <p>{{ notification.createdAt | date: 'd MMM HH:mm' }}</p>
+        </div>
+      </div>
+      <div class="notification-body">
+        <p>{{ notificationParsedContent[index].message }}</p>
+      </div>
+    </div>
+  </ng-template>
+
+</div>
+
+<button
+  *ngIf="! endOfNotifications"
+  (click)="loadMore()"
+  class="button button-wide account-more-button"
+>Load More</button>

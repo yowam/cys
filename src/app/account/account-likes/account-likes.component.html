@@ -1,0 +1,20 @@
+<app-filters
+  [tagsEnabled]="false"
+  [trendingEnabled]="false"
+  [reactionTypeEnabled]="true"
+  [activeReaction]="activeReaction"
+></app-filters>
+
+<div *ngFor="let reaction of userReaction">
+  <app-preview
+    *ngIf="reaction.confession"
+    [confession]="reaction.confession"
+    [reaction]="reaction"
+  ></app-preview>
+</div>
+
+<button
+  *ngIf="! endOfLikes"
+  (click)="loadMore()"
+  class="button button-wide account-more-button"
+>Load More</button>

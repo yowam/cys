@@ -1,0 +1,31 @@
+<form
+  #searchForm="ngForm"
+  class="search-input-container"
+  [class.search-input-container-active]="inputFocused"
+  (click)="searchBoxClicked()"
+>
+  <button class="search-input-icon search-input-icon-actionless">
+    <span class="material-icons">search</span>
+  </button>
+  <label for="search" class="search-label">Search site:</label>
+  <input
+    #inputRef
+    [(ngModel)]="searchInput"
+    id="search"
+    name="search"
+    class="search-input"
+    type="text"
+    placeholder="Search confessions"
+    spellcheck="true"
+    (focus)="onInputFocused()"
+    (blur)="onInputBlurred()"
+    (keyup.enter)="search()"
+  >
+  <button
+    *ngIf="inputRef.value"
+    class="search-input-icon"
+    type="reset"
+  >
+    <span class="material-icons">cancel</span>
+  </button>
+</form>

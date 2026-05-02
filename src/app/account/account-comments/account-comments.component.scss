@@ -1,0 +1,220 @@
+@import '../../styles/variables.scss';
+
+:host {
+
+  .comment-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    flex: 1 0 auto;
+    position: relative;
+    text-decoration: none;
+
+    &:focus,
+    &:hover {
+
+      .comment {
+        border-color: #fff;
+      }
+    }
+  }
+
+  .account-more-button {
+    display: block;
+    font-size: 1.6em;
+    padding: 0 2em;
+    margin: 0 auto;
+  }
+
+  .comment {
+    flex: 1 0 auto;
+    width: 0;
+    background-color: $body-colour-alt;
+    border: 0.1em solid $border-colour;
+    padding: 0.8em;
+    border-radius: 0.4em;
+    margin: 0 0 0.8em;
+  }
+
+  .comment-collapsed {
+
+    p {
+      font-size: 1.2em;
+      margin-top: 1.6em;
+      color: $button-font-colour;
+    }
+  }
+
+  .comment-reply-wrap {
+    display: flex;
+    flex: 1 0 auto;
+    width: 0;
+    min-width: 100%;
+    margin: 0 0 0.8em;
+
+    textarea {
+      background-color: transparent;
+      border-width: 0;
+      font-size: 1.4em;
+      line-height: 1.4em;
+      width: 100%;
+      height: auto;
+      min-height: 80px;
+      padding: 0.8em;
+      box-sizing: border-box;
+      color: #fff;
+      outline-width: 0;
+
+      &::placeholder {
+        color: $font-colour-alt;
+      }
+    }
+  }
+
+  .comment-reply-form {
+    border: 1px solid $border-colour;
+    border-radius: 4px;
+    min-width: 51.6em;
+
+    &-focused {
+      border-color: $button-font-colour;
+    }
+
+    &-actions {
+      border-top: 1px solid $border-colour;
+      text-align: right;
+      padding: 0.6em;
+
+      button {
+        display: inline-block;
+        border-width: 0;
+        background-color: $button-font-colour;
+        color: $body-colour-alt;
+        border: 0.1em solid $button-font-colour;
+        border-radius: 2em;
+        height: 3em;
+        padding: 0 1.6em;
+        margin: 0 0 0 0.6em;
+        cursor: pointer;
+        transition: background-color 0.15s ease-in-out;
+
+        &:hover,
+        &:focus {
+          background-color: #fff;
+          border-color: #fff;
+        }
+
+        &:disabled {
+          opacity: 0.6;
+          cursor: not-allowed;
+        }
+
+        span {
+          font-size: 1.2em;
+          line-height: 1;
+          color: $body-colour-alt;
+        }
+
+        &.comment-reply-form-action-secondary {
+          background-color: $border-colour;
+
+          span {
+            color: $button-font-colour;
+          }
+        }
+      }
+    }
+  }
+
+  .comment-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: $font-colour-alt;
+    margin: 0 0 0.4em;
+
+    .comment-meta p {
+      font-size: 1.2em;
+      margin: 0;
+      white-space: pre;
+    }
+
+    .comment-actions {
+
+      ul {
+        margin: 0;
+        padding: 0;
+        line-height: 0;
+      }
+
+      li {
+        display: inline-block;
+        margin-left: 0.8em;
+
+        button {
+          all: unset;
+          display: flex;
+          align-items: center;
+          height: 1.8em;
+          line-height: 1;
+          cursor: pointer;
+
+          &:hover,
+          &:focus {
+            color: #fff;
+          }
+        }
+
+        span {
+          font-size: 1.6em;
+          line-height: 0;
+        }
+      }
+    }
+  }
+
+  .comment-body {
+
+    p {
+      // display: -webkit-box;
+      // -webkit-line-clamp: 2;
+      // -webkit-box-orient: vertical;
+      // overflow: hidden;
+      font-size: 1.4em;
+      color: $button-font-colour;
+      margin: 0;
+    }
+  }
+
+  .card-comments-action {
+    text-align: center;
+
+    button {
+      height: auto;
+      padding: 1em;
+    }
+
+    span {
+      font-size: 1.2em;
+      color: $font-colour-alt;
+
+      &:not(:last-child) {
+        margin-right: 0.4em;
+      }
+    }
+  }
+}
+
+.more-list {
+  margin: 0 -0.2em;
+  padding: 0;
+
+  li {
+    display: block;
+    margin: 0 0.2em 0;
+  }
+
+  button {
+    width: 100%;
+  }
+
+}

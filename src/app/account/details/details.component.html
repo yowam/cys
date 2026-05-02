@@ -1,0 +1,26 @@
+<dl class="card">
+  <dt>Your Username:</dt>
+  <dd>{{user?.email}}</dd>
+
+  <dt>Joined:</dt>
+  <dd>{{user?.createdAt | date: 'MMM d, y, h:mm:ss a'}}</dd>
+
+  <dt>Reset password:</dt>
+  <dd>
+    <form *ngIf="!resetCompleted && !resetFailed" [formGroup]="resetForm">
+      <input
+          type="password"
+          placeholder="New password"
+          formControlName="password"
+          autocomplete="new-password"
+        >
+        <button
+          (click)="resetPassword()"
+          [disabled]="!resetForm.valid || loading"
+        >Reset</button>
+    </form>
+    <p *ngIf="resetCompleted" class="return-message">Password reset completed</p>
+    <p *ngIf="resetFailed" class="return-message">Reset password failed</p>
+  </dd>
+</dl>
+

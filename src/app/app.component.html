@@ -1,0 +1,33 @@
+<app-navbar [ngClass]="{'navbar-banned': banned}"></app-navbar>
+
+<main *ngIf="!banned" class="app-container" [ngClass]="{'app-container-snow': isDecemberOrJanuary}">
+  <ng-container *ngIf="isDecemberOrJanuary">
+    <div *ngFor="let snow of [].constructor(50)" class="snow"></div>
+  </ng-container>
+
+  <!-- <nav>
+    <a
+      class="menu-item"
+      routerLink="/confessions"
+      routerLinkActive="menu-item-active"
+      [routerLinkActiveOptions]="{ exact: true }">
+      <span>Confessions</span>
+    </a>
+
+    <a class="menu-item" routerLink="/about" routerLinkActive="menu-item-active">
+      <span>About</span>
+    </a>
+
+    <a
+      class="menu-item"
+      *ngIf="auth.isLoggedOut$ | async"
+      routerLink="/login"
+      routerLinkActive="menu-item-active">
+      <span>Login</span>
+    </a>
+  </nav> -->
+
+  <loading [detectRoutingOngoing]="true"></loading>
+
+  <router-outlet></router-outlet>
+</main>
