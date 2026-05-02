@@ -7,9 +7,10 @@ import {
   Inject,
   ViewChild,
   ElementRef,
-  ChangeDetectorRef
+  ChangeDetectorRef,
+  DOCUMENT
 } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
+
 import { ActivatedRoute } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { CdkMenuTrigger } from '@angular/cdk/menu';

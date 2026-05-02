@@ -1,9 +1,12 @@
-<ng-container *ngIf="errors$ | async as errors">
-  <div class="messages-container" *ngIf="showMessages">
-    <div class="message" *ngFor="let error of errors">
-      {{ error }}
+@if (errors$ | async; as errors) {
+  @if (showMessages) {
+    <div class="messages-container">
+      @for (error of errors; track error) {
+        <div class="message">
+          {{ error }}
+        </div>
+      }
+      <button class="close" (click)="onClose()">close</button>
     </div>
-
-    <button class="close" (click)="onClose()">close</button>
-  </div>
-</ng-container>
+  }
+}

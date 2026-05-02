@@ -5,106 +5,109 @@
   [routerLink]="isFeed ? ['/confessions/', {
     outlets: { 'modal': [confession.id, confession.slug] }
   }] : '/confessions/' + confession.id + '/' + confession.slug"
->
+  >
   <div class="card-header">
     <div class="card-header-left">
       <p>Published: {{confession.createdAt ? (confession.createdAt | ago) : 'Unknown'}}</p>
     </div>
     <div class="card-header-right" [ngClass]="{'card-header-active': reaction}">
       <p>
-        {{confession.likeCount || 0}} like<ng-container *ngIf="confession.likeCount !== 1">s</ng-container>
-      </p>
-    </div>
+        {{confession.likeCount || 0}} like@if (confession.likeCount !== 1) {
+        s
+      }
+    </p>
   </div>
+</div>
 
-  <div class="card-body">
-    <div class="card-content">
-      <p [innerHTML]="confession.body | wrapLine"></p>
-    </div>
-    <div class="card-meta">
-      <ul>
-        <li>
-          <button
-            class="button button-wide button-prevent"
-            [ngClass]="{'card-meta-button-active': reaction}"
-            (click)="$event.preventDefault(); $event.stopPropagation()"
-            (mouseenter)="triggerReactMenu()"
-            (mouseleave)="triggerReactMenuHideCounter()"
+<div class="card-body">
+  <div class="card-content">
+    <p [innerHTML]="confession.body | wrapLine"></p>
+  </div>
+  <div class="card-meta">
+    <ul>
+      <li>
+        <button
+          class="button button-wide button-prevent"
+          [ngClass]="{'card-meta-button-active': reaction}"
+          (click)="$event.preventDefault(); $event.stopPropagation()"
+          (mouseenter)="triggerReactMenu()"
+          (mouseleave)="triggerReactMenuHideCounter()"
           >
-            <span class="material-icons">
-              thumb_up</span> <span class="meta-label">{{reaction ? 'Liked': 'Like'}}
-            </span>
-          </button>
-          <app-react-popout
-            *ngIf="showReactPopout"
-            class="button-prevent"
-            (mouseenter)="triggerReactMenu()"
-            (mouseleave)="triggerReactMenuHideCounter()"
-            [confessionId]="confession.id"
-            [reaction]="reaction"
-            [isReacting]="isReacting"
-            (onReactionChange)="updateReaction($event)"
-            (onInteraction)="isReacting = $event"
-            (click)="$event.preventDefault(); $event.stopPropagation()"
-            (clickOutside)="showReactPopout = false"
-          ></app-react-popout>
-        </li>
-        <li>
-          <button
-            class="button button-wide"
-            (click)="$event.preventDefault(); $event.stopPropagation()"
+          <span class="material-icons">
+          thumb_up</span> <span class="meta-label">{{reaction ? 'Liked': 'Like'}}
+        </span>
+      </button>
+      @if (showReactPopout) {
+        <app-react-popout
+          class="button-prevent"
+          (mouseenter)="triggerReactMenu()"
+          (mouseleave)="triggerReactMenuHideCounter()"
+          [confessionId]="confession.id"
+          [reaction]="reaction"
+          [isReacting]="isReacting"
+          (onReactionChange)="updateReaction($event)"
+          (onInteraction)="isReacting = $event"
+          (click)="$event.preventDefault(); $event.stopPropagation()"
+          (clickOutside)="showReactPopout = false"
+        ></app-react-popout>
+      }
+    </li>
+    <li>
+      <button
+        class="button button-wide"
+        (click)="$event.preventDefault(); $event.stopPropagation()"
             [routerLink]="isFeed ? [{
               outlets: { 'modal': [confession.id, confession.slug] }
             }] : '/confessions/' + confession.id + '/' + confession.slug"
-            [queryParams]="{comment: true}"
-          >
-            <span class="material-icons">comment</span> <span class="meta-label">Comment</span>
-          </button>
-        </li>
-        <!-- <li>
-          <button
-            class="button button-wide button-prevent"
-            (click)="$event.preventDefault(); $event.stopPropagation()"
-          >
-            <span class="material-icons">share</span> <p>Share</p>
-          </button>
-        </li> -->
-        <li>
-          <button
-            class="button button-prevent"
-            (click)="$event.stopPropagation(); $event.preventDefault()"
-            [cdkMenuTriggerFor]="more"
-            [cdkMenuTriggerData]="{confession: confession}"
-          >
-            <span class="material-icons">more_horiz</span>
-          </button>
-        </li>
-      </ul>
-    </div>
-  </div>
+        [queryParams]="{comment: true}"
+        >
+        <span class="material-icons">comment</span> <span class="meta-label">Comment</span>
+      </button>
+    </li>
+    <!-- <li>
+    <button
+      class="button button-wide button-prevent"
+      (click)="$event.preventDefault(); $event.stopPropagation()"
+      >
+      <span class="material-icons">share</span> <p>Share</p>
+    </button>
+  </li> -->
+  <li>
+    <button
+      class="button button-prevent"
+      (click)="$event.stopPropagation(); $event.preventDefault()"
+      [cdkMenuTriggerFor]="more"
+      [cdkMenuTriggerData]="{confession: confession}"
+      >
+      <span class="material-icons">more_horiz</span>
+    </button>
+  </li>
+</ul>
+</div>
+</div>
 
-  <div class="card-footer">
-    <div class="card-comments">
-      <ng-container *ngFor="let comment of confession.comments">
-
-        <div
-          class="comment"
+<div class="card-footer">
+  <div class="card-comments">
+    @for (comment of confession.comments; track comment) {
+      <div
+        class="comment"
           [ngStyle]="{
             marginBottom: '0.4em'
           }"
-          [ngClass]="{'comment-highlight': isUserAdmin && !! comment.belongsToId && ![testUser, scraperUser].includes(comment.belongsToId)}"
+        [ngClass]="{'comment-highlight': isUserAdmin && !! comment.belongsToId && ![testUser, scraperUser].includes(comment.belongsToId)}"
         >
-          <div class="comment-header">
-            <div class="comment-meta">
-              <p>Published: {{comment.createdAt ? (comment.createdAt | ago) : 'Unknown'}}</p>
-            </div>
-          </div>
-          <div class="comment-body">
-            <p [innerHTML]="comment.body | wrapLine"></p>
+        <div class="comment-header">
+          <div class="comment-meta">
+            <p>Published: {{comment.createdAt ? (comment.createdAt | ago) : 'Unknown'}}</p>
           </div>
         </div>
-      </ng-container>
-      <div *ngIf="confession?.comments?.length && confession.comments.length > 1" class="card-comments-action">
+        <div class="comment-body">
+          <p [innerHTML]="comment.body | wrapLine"></p>
+        </div>
+      </div>
+    }
+    @if (confession.comments.length && confession.comments.length > 1) {
+      <div class="card-comments-action">
         <button
           class="button button-wide"
           (click)="$event.preventDefault(); $event.stopPropagation()"
@@ -112,13 +115,14 @@
             outlets: { 'modal': [confession.id, confession.slug] }
           }] : '/confessions/' + confession.id + '/' + confession.slug"
           fragment="appComments"
-        >
+          >
           <span class="material-icons">forum</span>
           <span>See more comments</span>
         </button>
       </div>
-    </div>
+    }
   </div>
+</div>
 </a>
 
 <ng-template #more let-confession="confession">
@@ -129,32 +133,36 @@
           (click)="openReportDialog()"
           class="button button-wide"
           cdkMenuItem
-        >
+          >
           <span class="material-icons">flag</span> <p>Report</p>
         </button>
       </li>
-      <li *ngIf="isUserAdmin">
-        <button
-          (click)="rejectConfession(confession.id)"
-          class="button button-wide"
-          cdkMenuItem
-        >
-          <span class="material-icons">warning</span> <p>Reject</p>
-        </button>
-      </li>
-      <li *ngIf="isUserAdmin">
-        <hr>
-        <hr>
-        <button
-          (click)="banUser(confession.id)"
-          class="button button-block"
-          cdkMenuItem
-        >
-          <span class="material-icons">warning</span> <p>Ban</p>
-        </button>
-      </li>
-    </ul>
-  </div>
-</ng-template>
+      @if (isUserAdmin) {
+        <li>
+          <button
+            (click)="rejectConfession(confession.id)"
+            class="button button-wide"
+            cdkMenuItem
+            >
+            <span class="material-icons">warning</span> <p>Reject</p>
+          </button>
+        </li>
+      }
+      @if (isUserAdmin) {
+        <li>
+          <hr>
+            <hr>
+              <button
+                (click)="banUser(confession.id)"
+                class="button button-block"
+                cdkMenuItem
+                >
+                <span class="material-icons">warning</span> <p>Ban</p>
+              </button>
+            </li>
+          }
+        </ul>
+      </div>
+    </ng-template>
 
-<router-outlet></router-outlet>
+    <router-outlet></router-outlet>

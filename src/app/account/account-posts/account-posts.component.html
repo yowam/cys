@@ -2,17 +2,19 @@
   [tagsEnabled]="false"
   [trendingEnabled]="false"
 ></app-filters>
-<div *ngIf="userConfessions">
-  <ng-container *ngFor="let confession of userConfessions; trackBy: trackById">
-    <app-preview
-      [confession]="confession"
-      [reaction]="confession.reactions[0]"
-    ></app-preview>
-  </ng-container>
-
-  <button
-    *ngIf="! endOfConfessions"
-    (click)="loadMore()"
-    class="button button-wide account-more-button"
-  >Load More</button>
-</div>
+@if (userConfessions) {
+  <div>
+    @for (confession of userConfessions; track trackById($index, confession)) {
+      <app-preview
+        [confession]="confession"
+        [reaction]="confession.reactions[0]"
+      ></app-preview>
+    }
+    @if (! endOfConfessions) {
+      <button
+        (click)="loadMore()"
+        class="button button-wide account-more-button"
+      >Load More</button>
+    }
+  </div>
+}

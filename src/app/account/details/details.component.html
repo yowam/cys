@@ -7,20 +7,26 @@
 
   <dt>Reset password:</dt>
   <dd>
-    <form *ngIf="!resetCompleted && !resetFailed" [formGroup]="resetForm">
-      <input
+    @if (!resetCompleted && !resetFailed) {
+      <form [formGroup]="resetForm">
+        <input
           type="password"
           placeholder="New password"
           formControlName="password"
           autocomplete="new-password"
-        >
+          >
         <button
           (click)="resetPassword()"
           [disabled]="!resetForm.valid || loading"
         >Reset</button>
-    </form>
-    <p *ngIf="resetCompleted" class="return-message">Password reset completed</p>
-    <p *ngIf="resetFailed" class="return-message">Reset password failed</p>
+      </form>
+    }
+    @if (resetCompleted) {
+      <p class="return-message">Password reset completed</p>
+    }
+    @if (resetFailed) {
+      <p class="return-message">Reset password failed</p>
+    }
   </dd>
 </dl>
 

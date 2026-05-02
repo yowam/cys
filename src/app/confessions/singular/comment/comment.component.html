@@ -1,9 +1,9 @@
 <div
   class="comment-container"
   [ngClass]="{'comment-container-yours': comment.belongsToId === user?.id}"
->
+  >
   <span [id]="comment.id" class="comment-anchor"></span>
-  <ng-container *ngFor="let thread of comment.commentTreePath | commentDepth; let index = index; let first = first; let last = last">
+  @for (thread of comment.commentTreePath | commentDepth; track thread; let index = $index; let first = $first; let last = $last) {
     <div
       class="comment-pre"
       [ngClass]="{
@@ -12,19 +12,25 @@
       }"
       (mouseenter)="onPathHover.emit({comment, index})"
       (mouseleave)="onPathLeave.emit()"
-    >
-      <div
-        *ngIf="last"
-        class="avatar"
-        (click)="onCollapseClick.emit({comment, index})"
       >
-        <span *ngIf="! comment.isCollapsed" class="avatar-minus">-</span>
-        <span *ngIf="!! comment.isCollapsed" class="avatar-plus">+</span>
-      </div>
-      <div
-        *ngIf="last && comment.commentTreePath !== comment.commentTreeId"
-        class="thread-line-connection"
-      ></div>
+      @if (last) {
+        <div
+          class="avatar"
+          (click)="onCollapseClick.emit({comment, index})"
+          >
+          @if (! comment.isCollapsed) {
+            <span class="avatar-minus">-</span>
+          }
+          @if (!! comment.isCollapsed) {
+            <span class="avatar-plus">+</span>
+          }
+        </div>
+      }
+      @if (last && comment.commentTreePath !== comment.commentTreeId) {
+        <div
+          class="thread-line-connection"
+        ></div>
+      }
       <div
         class="thread-line"
         [ngClass]="{
@@ -33,7 +39,7 @@
       ></div>
       <div class="thread-action"></div>
     </div>
-  </ng-container>
+  }
 
   <div
     class="comment-wrap"
@@ -41,109 +47,127 @@
     [ngStyle]="{
       marginTop: '0.2em'
     }"
-  >
-    <div class="comment-collapsed" *ngIf="isCollapsed">
-      <p *ngIf="highlightedCommentPath.length === 1">
-        1 comment
-        <span *ngIf="isCollapsed > 1">
-          and {{isCollapsed - 1}} {{isCollapsed > 2 ? 'replies' : 'reply'}}
-        </span>
-        collapsed
-      </p>
-      <p  *ngIf="highlightedCommentPath.length > 1">
-        {{isCollapsed}} {{isCollapsed > 1 ? 'replies' : 'reply'}} collapsed
-      </p>
-    </div>
-    <div
-      *ngIf="!isCollapsed"
-      class="comment"
-      [ngClass]="{'comment-highlight': user?.isAdmin && !! comment.belongsToId && ![testUser, scraperUser].includes(comment.belongsToId)}"
     >
-      <div class="comment-header">
-        <div class="comment-meta">
-          <!-- <p>Published: {{ comment.createdAt | date: 'd MMM HH:mm' }}</p> -->
-          <p>Published: {{ comment.createdAt | ago }}</p>
-        </div>
-        <div class="comment-actions">
-          <ul *ngIf="comment.belongsToId !== user?.id">
-            <li>
-              <button tooltip="Report" [cdkMenuTriggerFor]="more">
-                <span class="material-icons">more_horiz</span>
-              </button>
-            </li>
-            <li>
-              <button (click)="openReplyForm()" tooltip="Reply">
-                <span class="material-icons">reply</span>
-              </button>
-            </li>
-          </ul>
-          <div *ngIf="comment.belongsToId === user?.id" class="comment-meta">
-            <button *ngIf="user?.isAdmin" tooltip="Report" [cdkMenuTriggerFor]="more">
-              <span class="material-icons">more_horiz</span>
-            </button>
-            <p>By you</p>
+    @if (isCollapsed) {
+      <div class="comment-collapsed">
+        @if (highlightedCommentPath.length === 1) {
+          <p>
+            1 comment
+            @if (isCollapsed > 1) {
+              <span>
+                and {{isCollapsed - 1}} {{isCollapsed > 2 ? 'replies' : 'reply'}}
+              </span>
+            }
+            collapsed
+          </p>
+        }
+        @if (highlightedCommentPath.length > 1) {
+          <p >
+            {{isCollapsed}} {{isCollapsed > 1 ? 'replies' : 'reply'}} collapsed
+          </p>
+        }
+      </div>
+    }
+    @if (!isCollapsed) {
+      <div
+        class="comment"
+        [ngClass]="{'comment-highlight': user?.isAdmin && !! comment.belongsToId && ![testUser, scraperUser].includes(comment.belongsToId)}"
+        >
+        <div class="comment-header">
+          <div class="comment-meta">
+            <!-- <p>Published: {{ comment.createdAt | date: 'd MMM HH:mm' }}</p> -->
+            <p>Published: {{ comment.createdAt | ago }}</p>
+          </div>
+          <div class="comment-actions">
+            @if (comment.belongsToId !== user?.id) {
+              <ul>
+                <li>
+                  <button tooltip="Report" [cdkMenuTriggerFor]="more">
+                    <span class="material-icons">more_horiz</span>
+                  </button>
+                </li>
+                <li>
+                  <button (click)="openReplyForm()" tooltip="Reply">
+                    <span class="material-icons">reply</span>
+                  </button>
+                </li>
+              </ul>
+            }
+            @if (comment.belongsToId === user?.id) {
+              <div class="comment-meta">
+                @if (user?.isAdmin) {
+                  <button tooltip="Report" [cdkMenuTriggerFor]="more">
+                    <span class="material-icons">more_horiz</span>
+                  </button>
+                }
+                <p>By you</p>
+              </div>
+            }
           </div>
         </div>
-      </div>
-      <div class="comment-body">
-        <p [innerHTML]="comment.body | wrapLine"></p>
-      </div>
-    </div>
-
-    <div *ngIf="! isCollapsed && showReplyForm" class="comment-reply-wrap">
-      <form
-        #replyForm="ngForm"
-        (submit)="postReply()"
-        class="comment-reply-form"
-        [ngClass]="{'comment-reply-form-focused': replyFormFocused}"
-      >
-        <textarea
-          #replyTextArea
-          [(ngModel)]="reply"
-          name="reply"
-          (focus)="replyFormFocused = true"
-          (blur)="replyFormFocused = false"
-          [required]="true"
-          maxlength="40000"
-        ></textarea>
-        <div class="comment-reply-form-actions">
-          <button
-            (click)="showReplyForm = false"
-            class="comment-reply-form-action-secondary"
-          ><span>Cancel</span></button>
-          <button
-            type="submit"
-            [disabled]="!replyForm.valid || isSending"
-          ><span>{{isSending ? 'Sending' : 'Reply'}}</span></button>
+        <div class="comment-body">
+          <p [innerHTML]="comment.body | wrapLine"></p>
         </div>
-      </form>
+      </div>
+    }
+
+    @if (! isCollapsed && showReplyForm) {
+      <div class="comment-reply-wrap">
+        <form
+          #replyForm="ngForm"
+          (submit)="postReply()"
+          class="comment-reply-form"
+          [ngClass]="{'comment-reply-form-focused': replyFormFocused}"
+          >
+          <textarea
+            #replyTextArea
+            [(ngModel)]="reply"
+            name="reply"
+            (focus)="replyFormFocused = true"
+            (blur)="replyFormFocused = false"
+            [required]="true"
+            maxlength="40000"
+          ></textarea>
+          <div class="comment-reply-form-actions">
+            <button
+              (click)="showReplyForm = false"
+              class="comment-reply-form-action-secondary"
+              ><span>Cancel</span></button>
+              <button
+                type="submit"
+                [disabled]="!replyForm.valid || isSending"
+                ><span>{{isSending ? 'Sending' : 'Reply'}}</span></button>
+              </div>
+            </form>
+          </div>
+        }
+      </div>
+
     </div>
-  </div>
 
-</div>
-
-<ng-template #more>
-  <div class="card card-floating-light" cdkMenu>
-    <ul class="more-list">
-      <li>
-        <button
-          (click)="openReportDialog()"
-          class="button button-wide"
-          cdkMenuItem
-        >
-          <span class="material-icons">flag</span> <p>Report</p>
-        </button>
-      </li>
-      <li>
-        <button
-          *ngIf="user?.isAdmin"
-          (click)="rejectComment()"
-          class="button button-wide"
-          cdkMenuItem
-        >
-          <span class="material-icons">warning</span> <p>Reject</p>
-        </button>
-      </li>
-    </ul>
-  </div>
-</ng-template>
+    <ng-template #more>
+      <div class="card card-floating-light" cdkMenu>
+        <ul class="more-list">
+          <li>
+            <button
+              (click)="openReportDialog()"
+              class="button button-wide"
+              cdkMenuItem
+              >
+              <span class="material-icons">flag</span> <p>Report</p>
+            </button>
+          </li>
+          <li>
+            @if (user?.isAdmin) {
+              <button
+                (click)="rejectComment()"
+                class="button button-wide"
+                cdkMenuItem
+                >
+                <span class="material-icons">warning</span> <p>Reject</p>
+              </button>
+            }
+          </li>
+        </ul>
+      </div>
+    </ng-template>

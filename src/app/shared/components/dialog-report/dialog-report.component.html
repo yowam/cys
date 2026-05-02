@@ -12,54 +12,60 @@
     <button
       class="button"
       (click)="dialogRef.close()"
-    >
+      >
       <span class="material-icons">close</span>
     </button>
   </div>
-  <div *ngIf="!showThanks" class="dialog-body">
-    <ng-container *ngIf="!loading">
-      <p class="text-center">Tell us about the issues with this  @if (data.confession) {
-        confession
+  @if (!showThanks) {
+    <div class="dialog-body">
+      @if (!loading) {
+        <p class="text-center">Tell us about the issues with this  @if (data.confession) {
+          confession
+        }
+        @if (data.comment) {
+          comment
+        } and we'll look into it.</p>
+        @if (!loading) {
+          <ul class="report-tags">
+            @for (reportType of reportTypes; track reportType) {
+              <li
+                class="post-tag"
+                >
+                <button
+                  class="button button-wide button-report"
+                  (click)="report(reportType.value)"
+                  >
+                  {{reportType.label}}
+                </button>
+              </li>
+            }
+          </ul>
+        }
       }
-      @if (data.comment) {
-        comment
-      } and we'll look into it.</p>
-      <ul *ngIf="!loading" class="report-tags">
-        <ng-container *ngFor="let reportType of reportTypes">
-          <li
-            class="post-tag"
-          >
-            <button
-              class="button button-wide button-report"
-              (click)="report(reportType.value)"
-            >
-              {{reportType.label}}
-            </button>
-          </li>
-        </ng-container>
-      </ul>
-    </ng-container>
-
-    <p *ngIf="loading" class="text-center">Sending...</p>
-
-    <div class="warning">
-      <span class="material-icons">report</span>
-      <p>Not sure if something is breaking the rules? Review our
-        <a
-          href="javascript:;"
-          (click)="linkToContentPolicy()"
-        >Content Policy</a>
-      </p>
+      @if (loading) {
+        <p class="text-center">Sending...</p>
+      }
+      <div class="warning">
+        <span class="material-icons">report</span>
+        <p>Not sure if something is breaking the rules? Review our
+          <a
+            href="javascript:;"
+            (click)="linkToContentPolicy()"
+          >Content Policy</a>
+        </p>
+      </div>
     </div>
-  </div>
+  }
 
-  <div *ngIf="showThanks" class="dialog-body">
-    <p>Thank you for bringing this matter to our attention, your report has been received and will be under review by our moderation team.</p>
-    <button
-      class="button button-wide button-report-action"
-      (click)="dialogRef.close()"
-    >
-      Close
-    </button>
-  </div>
+  @if (showThanks) {
+    <div class="dialog-body">
+      <p>Thank you for bringing this matter to our attention, your report has been received and will be under review by our moderation team.</p>
+      <button
+        class="button button-wide button-report-action"
+        (click)="dialogRef.close()"
+        >
+        Close
+      </button>
+    </div>
+  }
 </div>

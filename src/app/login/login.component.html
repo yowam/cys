@@ -2,77 +2,72 @@
   <h1>{{isLogin ? 'Login' : 'Sign Up'}}</h1>
   <p>By continuing, you agree to our <a href="javascript:;" routerLink="/policies/user-agreement" target="_blank">User Agreement</a> and acknowledge that you understand the <a href="javascript:;" routerLink="/policies/privacy-policy" target="_blank">Privacy Policy</a>.</p>
 
-  <ng-container *ngIf="isLogin">
+  @if (isLogin) {
     <form [formGroup]="loginForm">
       <input type="text" placeholder="Username" formControlName="email" />
-
       <input type="password" placeholder="Password" formControlName="password" />
-
-      <div *ngIf="failedMessage" class="warning">
-        <span class="material-icons">report</span>
-        <p class="warning">{{failedMessage}}</p>
-      </div>
-
+      @if (failedMessage) {
+        <div class="warning">
+          <span class="material-icons">report</span>
+          <p class="warning">{{failedMessage}}</p>
+        </div>
+      }
       <!-- <p>Forgot your password?</p> -->
       <button (click)="login()" [disabled]="!loginForm.valid">Login</button>
-
       <hr>
-      <p>..or create an account</p>
-      <button (click)="isLogin = false; failedMessage = ''">Signup</button>
-    </form>
-  </ng-container>
+        <p>..or create an account</p>
+        <button (click)="isLogin = false; failedMessage = ''">Signup</button>
+      </form>
+    }
 
-  <ng-container *ngIf="! isLogin">
-    <form [formGroup]="signupForm" autocomplete="off">
-      <input
-        [ngClass]="{'input-invalid': signupEmail?.invalid && signupEmail?.touched && signupEmail?.errors?.pattern}"
-        id="email"
-        type="text"
-        placeholder="Username"
-        formControlName="email"
-        autocomplete="off"
-      >
-
-      <input
-        type="password"
-        placeholder="Password"
-        formControlName="password"
-        autocomplete="new-password"
-      >
-
-      <!-- <div class="recaptcha-wrap">
+    @if (! isLogin) {
+      <form [formGroup]="signupForm" autocomplete="off">
+        <input
+          [ngClass]="{'input-invalid': signupEmail?.invalid && signupEmail?.touched && signupEmail?.errors?.pattern}"
+          id="email"
+          type="text"
+          placeholder="Username"
+          formControlName="email"
+          autocomplete="off"
+          >
+        <input
+          type="password"
+          placeholder="Password"
+          formControlName="password"
+          autocomplete="new-password"
+          >
+        <!-- <div class="recaptcha-wrap">
         <re-captcha
           (resolved)="recaptchaResolved($event)"
           siteKey="6LeTKO8pAAAAALcGZO4fXCHn0o-IMEE6-x3uGseN"
-          ></re-captcha>
+        ></re-captcha>
         <p class="text-loading" aria-hidden="true">Loading captcha</p>
       </div> -->
-
-      <div *ngIf="failedMessage" class="warning">
-        <span class="material-icons">report</span>
-        <p class="warning">{{failedMessage || 'Unknown Error'}}</p>
-      </div>
-
-      <div
-        *ngIf="signupEmail?.invalid && signupEmail?.touched && signupEmail?.errors?.pattern"
-        class="warning"
-      >
-        <span class="material-icons">report</span>
-        <p class="warning">
-          Invalid username. Only letters, numbers, hyphens, and underscores are allowed.
-        </p>
-      </div>
-
+      @if (failedMessage) {
+        <div class="warning">
+          <span class="material-icons">report</span>
+          <p class="warning">{{failedMessage || 'Unknown Error'}}</p>
+        </div>
+      }
+      @if (signupEmail?.invalid && signupEmail?.touched && signupEmail?.errors?.pattern) {
+        <div
+          class="warning"
+          >
+          <span class="material-icons">report</span>
+          <p class="warning">
+            Invalid username. Only letters, numbers, hyphens, and underscores are allowed.
+          </p>
+        </div>
+      }
       <button
         (click)="signup()"
         [disabled]="! signupForm.valid"
-      >
+        >
         <!-- [disabled]="! recaptchaResponse || ! signupForm.valid" -->
         Sign Up
       </button>
-
       <hr>
-      <p>Already a member? <a href="javascript:;" (click)="isLogin = true; failedMessage = ''">Log In</a></p>
-    </form>
-  </ng-container>
-</div>
+        <p>Already a member? <a href="javascript:;" (click)="isLogin = true; failedMessage = ''">Log In</a></p>
+      </form>
+    }
+  </div>

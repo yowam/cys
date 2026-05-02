@@ -6,7 +6,7 @@
         (click)="react(ReactionType.LIKE)"
         class="button"
         cdkMenuItem
-      >
+        >
         <span>👍</span>
       </button>
     </li>
@@ -16,7 +16,7 @@
         (click)="react(ReactionType.LOVE)"
         class="button"
         cdkMenuItem
-      >
+        >
         <span>😍</span>
       </button>
     </li>
@@ -26,7 +26,7 @@
         (click)="react(ReactionType.HAHA)"
         class="button"
         cdkMenuItem
-      >
+        >
         <span>😂</span>
       </button>
     </li>
@@ -36,7 +36,7 @@
         (click)="react(ReactionType.WOW)"
         class="button"
         cdkMenuItem
-      >
+        >
         <span>🤮</span>
       </button>
     </li>
@@ -46,7 +46,7 @@
         (click)="react(ReactionType.ANGRY)"
         class="button"
         cdkMenuItem
-      >
+        >
         <span>🤬</span>
       </button>
     </li>
@@ -56,10 +56,12 @@
         (click)="react(ReactionType.SAD)"
         class="button"
         cdkMenuItem
-      >
+        >
         <span>😨</span>
       </button>
     </li>
   </ul>
-  <p *ngIf="isReacting" class="overlay">Reacting...</p>
+  @if (isReacting) {
+    <p class="overlay">Reacting...</p>
+  }
 </div>

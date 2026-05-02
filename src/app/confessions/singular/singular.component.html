@@ -4,21 +4,24 @@
       [confession]="confessions[activeConfessionIndex]"
     ></app-item>
 
-    <ng-container *ngIf="confessions[activeConfessionIndex].tags.length >= 5">
+    @if (confessions[activeConfessionIndex].tags.length >= 5) {
       <p>Similar Confessions:</p>
+      @if (isLoading) {
+        <p class="loading-more text-loading">Loading...</p>
+      }
+      @if (!isLoading && confessions[activeConfessionIndex].similarConfessions) {
+        <app-feed
+          [items]="confessions[activeConfessionIndex].similarConfessions || []"
+          [routerOutletActive]="false"
+          [routerOutletRef]="route.outlet === 'modal'"
+          (loadMoreConfessions)="loadMoreConfessions()"
+        ></app-feed>
+      }
+    }
 
-      <p *ngIf="isLoading" class="loading-more text-loading">Loading...</p>
-
-      <app-feed
-        *ngIf="!isLoading && confessions[activeConfessionIndex].similarConfessions"
-        [items]="confessions[activeConfessionIndex].similarConfessions || []"
-        [routerOutletActive]="false"
-        [routerOutletRef]="route.outlet === 'modal'"
-        (loadMoreConfessions)="loadMoreConfessions()"
-      ></app-feed>
-    </ng-container>
-
-     <p *ngIf="isLoadingMore" class="loading-more text-loading">Loading More...</p>
+    @if (isLoadingMore) {
+      <p class="loading-more text-loading">Loading More...</p>
+    }
   </div>
 
   <aside class="side">

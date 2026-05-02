@@ -9,7 +9,7 @@ import {
   UrlTree,
 } from '@angular/router';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map } from 'rxjs';
 
 @Injectable()
 export class AuthGuard implements CanActivate, CanActivateChild {

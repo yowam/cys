@@ -5,39 +5,41 @@
     <p>Bid farewell to judgment; we're all here to revel in our questionable life choices.</p>
   </div>
 
-  <div *ngIf="showSuicidePreventionMessage" class="card card-helpline">
-    <p>Suicidal? Important Crisis Lines:</p>
-    <p>US: Suicide Crisis Lifeline 988 or National Suicide Prevention Lifeline 1-800-273-TALK (8255)</p>
-    <p>UK: Samaritans 116-123</p>
-    <p>Canada: Talk Suicide Canada (833) 456-4566</p>
-    <p>Australia: Lifeline 13-11-14</p>
-    <div class="card-footer">
-      <p><a href="https://en.wikipedia.org/wiki/List_of_suicide_crisis_lines" target="_blank">List of crisis lines by country</a> - Wikipedia</p>
+  @if (showSuicidePreventionMessage) {
+    <div class="card card-helpline">
+      <p>Suicidal? Important Crisis Lines:</p>
+      <p>US: Suicide Crisis Lifeline 988 or National Suicide Prevention Lifeline 1-800-273-TALK (8255)</p>
+      <p>UK: Samaritans 116-123</p>
+      <p>Canada: Talk Suicide Canada (833) 456-4566</p>
+      <p>Australia: Lifeline 13-11-14</p>
+      <div class="card-footer">
+        <p><a href="https://en.wikipedia.org/wiki/List_of_suicide_crisis_lines" target="_blank">List of crisis lines by country</a> - Wikipedia</p>
+      </div>
     </div>
-  </div>
+  }
 
   <div class="hover-wrap" #hoverWrap [class.fix-to-top]="fixHoverWrap">
     <!-- <div class="card">
-      <div [style.height.px]="300" [style.width.px]="300">Ad</div>
-    </div> -->
+    <div [style.height.px]="300" [style.width.px]="300">Ad</div>
+  </div> -->
 
-    <div class="card">
-      <ul class="link-list">
-        <li><a href="javascript:;" routerLink="/policies/user-agreement">User Agreement</a></li>
-        <li><a href="javascript:;" routerLink="/policies/content-policy">Content Policy</a></li>
-        <li><a href="javascript:;" routerLink="/policies/privacy-policy">Privacy Policy</a></li>
-        <li><a href="javascript:;" routerLink="/policies/moderator-code-of-conduct">
-          Moderator Code Of Conduct
-        </a></li>
-      </ul>
-      <div class="card-footer">
-        <a href="javascript:;" routerLink="/contact"><span class="material-icons">help</span> Contact our help team</a>
-      </div>
-      <div class="card-footer">
-        <p><a href="https://yamy.io/" target="_blank">yamy.io</a> © 2024. All rights reserved.</p>
-      </div>
+  <div class="card">
+    <ul class="link-list">
+      <li><a href="javascript:;" routerLink="/policies/user-agreement">User Agreement</a></li>
+      <li><a href="javascript:;" routerLink="/policies/content-policy">Content Policy</a></li>
+      <li><a href="javascript:;" routerLink="/policies/privacy-policy">Privacy Policy</a></li>
+      <li><a href="javascript:;" routerLink="/policies/moderator-code-of-conduct">
+        Moderator Code Of Conduct
+      </a></li>
+    </ul>
+    <div class="card-footer">
+      <a href="javascript:;" routerLink="/contact"><span class="material-icons">help</span> Contact our help team</a>
+    </div>
+    <div class="card-footer">
+      <p><a href="https://yowam.com/" target="_blank">yowam.com</a> © 2024. All rights reserved.</p>
     </div>
   </div>
+</div>
 </div>
 
 <button class="sidebar-action" (click)="isSideNavOpen = true">
@@ -47,7 +49,7 @@
 <div
   class="sidenav"
   [class.sidenav-active]="isSideNavOpen"
->
+  >
   <div class="sidenav-header">
     <button (click)="isSideNavOpen = false">
       <span class="material-icons">close</span>

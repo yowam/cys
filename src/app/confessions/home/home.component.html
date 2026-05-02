@@ -7,38 +7,50 @@
 <div [hidden]="modal.isActivated" class="home" [ngClass]="{'home-loading': isLoading}">
   <div class="container">
     <app-create></app-create>
-    <app-filters
-      *ngIf="!(searchedTerm || searchedTag)"
-      [tagsEnabled]="true"
-      [trendingEnabled]="true"
-      [bestActive]="[Sort.BestMonth, Sort.BestYear].includes(sort) && sort"
-      [newestActive]="sort === Sort.Newest"
-      [trendingActive]="sort === Sort.Trending"
-      (onNewestClicked)="sort = Sort.Newest; sortNewConfessions()"
-      (onBestClicked)="sort = $event; sortNewConfessions()"
-      (onTrendingClicked)="sort = Sort.Trending; sortNewConfessions()"
-    ></app-filters>
-    <h2 *ngIf="searchedTerm">Results for: "{{searchedTerm}}"</h2>
-    <h2 *ngIf="searchedTag">Results for tag: "{{searchedTag}}"</h2>
+    @if (!(searchedTerm || searchedTag)) {
+      <app-filters
+        [tagsEnabled]="true"
+        [trendingEnabled]="true"
+        [bestActive]="[Sort.BestMonth, Sort.BestYear].includes(sort) && sort"
+        [newestActive]="sort === Sort.Newest"
+        [trendingActive]="sort === Sort.Trending"
+        (onNewestClicked)="sort = Sort.Newest; sortNewConfessions()"
+        (onBestClicked)="sort = $event; sortNewConfessions()"
+        (onTrendingClicked)="sort = Sort.Trending; sortNewConfessions()"
+      ></app-filters>
+    }
+    @if (searchedTerm) {
+      <h2>Results for: "{{searchedTerm}}"</h2>
+    }
+    @if (searchedTag) {
+      <h2>Results for tag: "{{searchedTag}}"</h2>
+    }
 
-    <div *ngIf="isLoading && ! hasErrored">
-      <app-preview-loading></app-preview-loading>
-    </div>
+    @if (isLoading && ! hasErrored) {
+      <div>
+        <app-preview-loading></app-preview-loading>
+      </div>
+    }
 
-    <p class="feed-error" *ngIf="hasErrored">
-      <span class="feed-error-icon">(˚Δ˚)b</span>
-      Error getting confessions. Try refreshing.
-    </p>
+    @if (hasErrored) {
+      <p class="feed-error">
+        <span class="feed-error-icon">(˚Δ˚)b</span>
+        Error getting confessions. Try refreshing.
+      </p>
+    }
 
-    <app-feed
-      *ngIf="! isLoading || ! hasErrored"
-      [items]="confessions"
-      [routerOutletRef]="modal"
-      [routerOutletActive]="modal.isActivated"
-      (loadMoreConfessions)="loadMoreConfessions()"
-    ></app-feed>
+    @if (! isLoading || ! hasErrored) {
+      <app-feed
+        [items]="confessions"
+        [routerOutletRef]="modal"
+        [routerOutletActive]="modal.isActivated"
+        (loadMoreConfessions)="loadMoreConfessions()"
+      ></app-feed>
+    }
 
-    <p *ngIf="isLoadingMore" class="loading-more text-loading">Loading More...</p>
+    @if (isLoadingMore) {
+      <p class="loading-more text-loading">Loading More...</p>
+    }
   </div>
 
   <aside class="side">

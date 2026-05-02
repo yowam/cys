@@ -3,7 +3,7 @@
   class="search-input-container"
   [class.search-input-container-active]="inputFocused"
   (click)="searchBoxClicked()"
->
+  >
   <button class="search-input-icon search-input-icon-actionless">
     <span class="material-icons">search</span>
   </button>
@@ -20,12 +20,13 @@
     (focus)="onInputFocused()"
     (blur)="onInputBlurred()"
     (keyup.enter)="search()"
-  >
-  <button
-    *ngIf="inputRef.value"
-    class="search-input-icon"
-    type="reset"
-  >
-    <span class="material-icons">cancel</span>
-  </button>
+    >
+  @if (inputRef.value) {
+    <button
+      class="search-input-icon"
+      type="reset"
+      >
+      <span class="material-icons">cancel</span>
+    </button>
+  }
 </form>

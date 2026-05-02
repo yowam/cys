@@ -13,34 +13,50 @@
     </div>
     <div class="card">
       <h2>Trending tags:</h2>
-      <ul *ngIf="isLoading" class="bullets">
-        <li *ngFor="let i of trendingTagsPlaceholders">
-          <span class="bullet bullet-empty" [style.width.px]="i"></span>
-        </li>
-      </ul>
-      <ul *ngIf="!isLoading" class="bullets">
-        <li *ngFor="let tag of trendingTags">
-          <a class="bullet" [routerLink]="['/search']" [queryParams]="{tag: tag}">{{tag}}</a>
-        </li>
-      </ul>
+      @if (isLoading) {
+        <ul class="bullets">
+          @for (i of trendingTagsPlaceholders; track i) {
+            <li>
+              <span class="bullet bullet-empty" [style.width.px]="i"></span>
+            </li>
+          }
+        </ul>
+      }
+      @if (!isLoading) {
+        <ul class="bullets">
+          @for (tag of trendingTags; track tag) {
+            <li>
+              <a class="bullet" [routerLink]="['/search']" [queryParams]="{tag: tag}">{{tag}}</a>
+            </li>
+          }
+        </ul>
+      }
 
       <hr>
 
-      <h2>Most popular tags:</h2>
-      <ul *ngIf="isLoading" class="bullets">
-        <li *ngFor="let i of topTagsPlaceholders">
-          <span class="bullet bullet-empty" [style.width.px]="i"></span>
-        </li>
-      </ul>
-      <ul *ngIf="!isLoading" class="bullets">
-        <li *ngFor="let tag of topTags">
-          <a class="bullet" [routerLink]="['/search']" [queryParams]="{tag: tag}">{{tag}}</a>
-        </li>
-      </ul>
+        <h2>Most popular tags:</h2>
+        @if (isLoading) {
+          <ul class="bullets">
+            @for (i of topTagsPlaceholders; track i) {
+              <li>
+                <span class="bullet bullet-empty" [style.width.px]="i"></span>
+              </li>
+            }
+          </ul>
+        }
+        @if (!isLoading) {
+          <ul class="bullets">
+            @for (tag of topTags; track tag) {
+              <li>
+                <a class="bullet" [routerLink]="['/search']" [queryParams]="{tag: tag}">{{tag}}</a>
+              </li>
+            }
+          </ul>
+        }
+      </div>
     </div>
-  </div>
 
-  <aside class="side">
-    <app-sidebar></app-sidebar>
-  </aside>
-</div>
+    <aside class="side">
+      <app-sidebar></app-sidebar>
+    </aside>
+  </div>

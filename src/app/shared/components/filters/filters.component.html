@@ -1,59 +1,62 @@
 <div class="card">
   <div class="left">
-    <button
-      *ngIf="newestEnabled"
-      class="button button-wide"
+    @if (newestEnabled) {
+      <button
+        class="button button-wide"
       [ngClass]="{
         'button-eventless': ! tagsEnabled && ! trendingEnabled,
         'button-active': newestActive
       }"
-      (click)="onNewestClicked.emit()"
-      >
-      <!-- tooltip="Newest"
-      [tooltipDisabled]="!isDesktopWidth" -->
-      <span class="material-icons">hourglass_empty</span>
-      <p>Newest</p>
-    </button>
+        (click)="onNewestClicked.emit()"
+        >
+        <!-- tooltip="Newest"
+        [tooltipDisabled]="!isDesktopWidth" -->
+        <span class="material-icons">hourglass_empty</span>
+        <p>Newest</p>
+      </button>
+    }
 
-    <button
-      *ngIf="trendingEnabled"
-      class="button button-wide"
-      [ngClass]="{'button-active': !! trendingActive}"
-      (click)="onTrendingClicked.emit()"
-      >
-      <span class="material-icons">trending_up</span>
-      <p>Trending</p>
-    </button>
+    @if (trendingEnabled) {
+      <button
+        class="button button-wide"
+        [ngClass]="{'button-active': !! trendingActive}"
+        (click)="onTrendingClicked.emit()"
+        >
+        <span class="material-icons">trending_up</span>
+        <p>Trending</p>
+      </button>
+    }
 
-    <ng-container *ngIf="tagsEnabled">
+    @if (tagsEnabled) {
       <span class="seperator"></span>
       <a
         class="button button-wide"
         [ngClass]="{'button-active': !! bestActive}"
         [routerLink]="'/tags'"
-      >
+        >
         <span class="material-icons">tag</span>
         <p>Tags</p>
       </a>
-    </ng-container>
+    }
   </div>
 
   <div class="right">
     <!-- <button
-      *ngIf="tagsEnabled"
-      class="button button-wide"
-      [cdkMenuTriggerFor]="trending"
+    *ngIf="tagsEnabled"
+    class="button button-wide"
+    [cdkMenuTriggerFor]="trending"
     >
-      <p>All Time</p>
-    </button> -->
+    <p>All Time</p>
+  </button> -->
+  @if (reactionTypeEnabled) {
     <button
-      *ngIf="reactionTypeEnabled"
       class="button button-wide"
       [cdkMenuTriggerFor]="reaction"
-    >
+      >
       <p>Filter</p>
     </button>
-  </div>
+  }
+</div>
 </div>
 
 <ng-template #trending>
@@ -78,7 +81,7 @@
           cdkMenuItem
         >All</button>
       </li>
-      <ng-container *ngFor="let reaction of reactions">
+      @for (reaction of reactions; track reaction) {
         <li>
           <button
             class="button button-wide"
@@ -88,7 +91,7 @@
             cdkMenuItem
           >{{reaction.label}}</button>
         </li>
-      </ng-container>
+      }
     </ul>
   </div>
 </ng-template>
@@ -97,45 +100,45 @@
   <div class="card card-floating" cdkMenu>
     <ul class="filter-list">
       <!-- <li>
-        <button
-          class="button button-wide"
-          [ngClass]="{'button-active': bestActive === Sort.BestWeek}"
-          cdkMenuItem
-          (click)="onBestClicked.emit(Sort.BestWeek)"
+      <button
+        class="button button-wide"
+        [ngClass]="{'button-active': bestActive === Sort.BestWeek}"
+        cdkMenuItem
+        (click)="onBestClicked.emit(Sort.BestWeek)"
         >
-          Week
-        </button>
-      </li> -->
-      <li>
-        <button
-          class="button button-wide"
-          [ngClass]="{'button-active': bestActive === Sort.BestMonth}"
-          cdkMenuItem
-          (click)="onBestClicked.emit(Sort.BestMonth)"
+        Week
+      </button>
+    </li> -->
+    <li>
+      <button
+        class="button button-wide"
+        [ngClass]="{'button-active': bestActive === Sort.BestMonth}"
+        cdkMenuItem
+        (click)="onBestClicked.emit(Sort.BestMonth)"
         >
-          Month
-        </button>
-      </li>
-      <li>
-        <button
-          class="button button-wide"
-          [ngClass]="{'button-active': bestActive === Sort.BestYear}"
-          cdkMenuItem
-          (click)="onBestClicked.emit(Sort.BestYear)"
+        Month
+      </button>
+    </li>
+    <li>
+      <button
+        class="button button-wide"
+        [ngClass]="{'button-active': bestActive === Sort.BestYear}"
+        cdkMenuItem
+        (click)="onBestClicked.emit(Sort.BestYear)"
         >
-          Year
-        </button>
-      </li>
-      <!-- <li>
-        <button
-          class="button button-wide"
-          [ngClass]="{'button-active': bestActive === Sort.BestAll}"
-          cdkMenuItem
-          (click)="onBestClicked.emit(Sort.BestAll)"
-        >
-          All time
-        </button>
-      </li> -->
-    </ul>
-  </div>
+        Year
+      </button>
+    </li>
+    <!-- <li>
+    <button
+      class="button button-wide"
+      [ngClass]="{'button-active': bestActive === Sort.BestAll}"
+      cdkMenuItem
+      (click)="onBestClicked.emit(Sort.BestAll)"
+      >
+      All time
+    </button>
+  </li> -->
+</ul>
+</div>
 </ng-template>

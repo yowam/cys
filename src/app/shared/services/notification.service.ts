@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { map } from 'rxjs/operators';
+import { map } from 'rxjs';
 import { firstValueFrom } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { AuthStore } from '../../services/auth.store';
