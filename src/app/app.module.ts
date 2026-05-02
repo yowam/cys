@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 // import { RecaptchaModule } from 'ng-recaptcha';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -18,29 +18,21 @@ import { NotificationsComponent } from './account/notifications/notifications.co
 import { FaqComponent } from './faq/faq.component';
 import { DialogLoginComponent } from './dialog-login/dialog-login.component';
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    LoginComponent,
-    DialogLoginComponent,
-    PageNotFoundComponent,
-    PostComponent,
-    DetailsComponent,
-    NotificationsComponent,
-    FaqComponent,
-    ContactComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    SharedModule,
-    // RecaptchaModule,
-  ],
-  providers: [],
-  bootstrap: [AppComponent],
-})
+@NgModule({ declarations: [
+        AppComponent,
+        LoginComponent,
+        DialogLoginComponent,
+        PageNotFoundComponent,
+        PostComponent,
+        DetailsComponent,
+        NotificationsComponent,
+        FaqComponent,
+        ContactComponent
+    ],
+    bootstrap: [AppComponent], imports: [BrowserModule,
+        AppRoutingModule,
+        FormsModule,
+        ReactiveFormsModule,
+        SharedModule], providers: [provideHttpClient(withInterceptorsFromDi())] })
 
 export class AppModule {}

@@ -4,7 +4,7 @@ import { User } from '../shared/model/user';
 import { map, shareReplay, tap, take } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
-import { HttpClient, HttpHeaders} from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 const AUTH_DATA = 'auth_data';
 
