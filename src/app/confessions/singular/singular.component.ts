@@ -6,9 +6,10 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-singular',
-  templateUrl: './singular.component.html',
-  styleUrls: ['./singular.component.scss'],
+    selector: 'app-singular',
+    templateUrl: './singular.component.html',
+    styleUrls: ['./singular.component.scss'],
+    standalone: false
 })
 export class SingularComponent implements OnInit, OnDestroy {
   confessions: Confession[] = [];

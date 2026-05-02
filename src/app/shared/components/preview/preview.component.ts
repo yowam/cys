@@ -10,9 +10,10 @@ import { ConfessionsService } from '../../services/confessions.service';
 import { ReportService } from '../../services/report.service';
 
 @Component({
-  selector: 'app-preview',
-  templateUrl: './preview.component.html',
-  styleUrls: ['./preview.component.scss']
+    selector: 'app-preview',
+    templateUrl: './preview.component.html',
+    styleUrls: ['./preview.component.scss'],
+    standalone: false
 })
 export class PreviewComponent implements OnInit {
   @Input() confession: Confession;

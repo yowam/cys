@@ -3,9 +3,10 @@ import { ConfessionsService } from '../../shared/services/confessions.service';
 import { Confession } from '../../shared/model/confession';
 
 @Component({
-  selector: 'app-account-posts',
-  templateUrl: './account-posts.component.html',
-  styleUrls: ['./account-posts.component.scss']
+    selector: 'app-account-posts',
+    templateUrl: './account-posts.component.html',
+    styleUrls: ['./account-posts.component.scss'],
+    standalone: false
 })
 export class AccountPostsComponent {
   userConfessions: Confession[];

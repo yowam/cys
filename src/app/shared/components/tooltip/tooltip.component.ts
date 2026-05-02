@@ -1,10 +1,11 @@
 import { Component, OnInit, ChangeDetectionStrategy, TemplateRef, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-tooltip',
-  templateUrl: './tooltip.component.html',
-  styleUrls: ['./tooltip.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'app-tooltip',
+    templateUrl: './tooltip.component.html',
+    styleUrls: ['./tooltip.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class TooltipComponent implements OnInit {
   @Input() tooltipData: TemplateRef<void> | string | false;

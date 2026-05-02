@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { NotificationService, NOTIFICATION_UNREAD } from '../../shared/services/notification.service';
 import { Notification, NotificationContent } from '../../shared/model/notification';
 @Component({
-  selector: 'app-notifications',
-  templateUrl: './notifications.component.html',
-  styleUrls: ['./notifications.component.scss']
+    selector: 'app-notifications',
+    templateUrl: './notifications.component.html',
+    styleUrls: ['./notifications.component.scss'],
+    standalone: false
 })
 export class NotificationsComponent implements OnInit {
   userNotifications: Notification[];

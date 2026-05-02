@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-preview-loading',
-  templateUrl: './preview-loading.component.html',
-  styleUrls: ['./preview-loading.component.scss']
+    selector: 'app-preview-loading',
+    templateUrl: './preview-loading.component.html',
+    styleUrls: ['./preview-loading.component.scss'],
+    standalone: false
 })
 export class PreviewLoadingComponent implements OnInit {
   randomArray: Number[][] = Array(10).fill([0]);

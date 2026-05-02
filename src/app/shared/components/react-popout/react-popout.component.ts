@@ -7,9 +7,10 @@ import { Dialog } from '@angular/cdk/dialog';
 import { DialogLoginComponent } from '../../../dialog-login/dialog-login.component';
 
 @Component({
-  selector: 'app-react-popout',
-  templateUrl: './react-popout.component.html',
-  styleUrls: ['./react-popout.component.scss']
+    selector: 'app-react-popout',
+    templateUrl: './react-popout.component.html',
+    styleUrls: ['./react-popout.component.scss'],
+    standalone: false
 })
 export class ReactPopoutComponent {
   @Input() isReacting = false;

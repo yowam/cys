@@ -7,9 +7,10 @@ import { Subject } from 'rxjs';
 import { ReactionType } from '../../shared/model/reaction';
 
 @Component({
-  selector: 'app-account-likes',
-  templateUrl: './account-likes.component.html',
-  styleUrls: ['./account-likes.component.scss']
+    selector: 'app-account-likes',
+    templateUrl: './account-likes.component.html',
+    styleUrls: ['./account-likes.component.scss'],
+    standalone: false
 })
 export class AccountLikesComponent implements OnInit, OnDestroy {
   userReaction: Reaction[];

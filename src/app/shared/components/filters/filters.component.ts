@@ -3,9 +3,10 @@ import { ReactionType } from '../../model/reaction';
 import { Sort } from 'src/app/confessions/home/home.component';
 
 @Component({
-  selector: 'app-filters',
-  templateUrl: './filters.component.html',
-  styleUrls: ['./filters.component.scss']
+    selector: 'app-filters',
+    templateUrl: './filters.component.html',
+    styleUrls: ['./filters.component.scss'],
+    standalone: false
 })
 export class FiltersComponent implements OnInit {
   @Input() tagsEnabled = true;

@@ -2,9 +2,10 @@ import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/cor
 import { Comment, CommentWithTreeData } from '../../../shared/model/comment';
 
 @Component({
-  selector: 'app-comments',
-  templateUrl: './comments.component.html',
-  styleUrl: './comments.component.scss'
+    selector: 'app-comments',
+    templateUrl: './comments.component.html',
+    styleUrl: './comments.component.scss',
+    standalone: false
 })
 export class CommentsComponent implements OnInit, OnChanges {
   @Input() comments: Comment[];

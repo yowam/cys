@@ -7,9 +7,10 @@ export interface DialogData {
 }
 
 @Component({
-  selector: 'app-dialog-share',
-  templateUrl: './dialog-share.component.html',
-  styleUrls: ['./dialog-share.component.scss']
+    selector: 'app-dialog-share',
+    templateUrl: './dialog-share.component.html',
+    styleUrls: ['./dialog-share.component.scss'],
+    standalone: false
 })
 export class DialogShareComponent implements OnInit {
   linkCopied = false;

@@ -3,7 +3,8 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import DOMPurify from 'dompurify';
 
 @Pipe({
-  name: 'wrapLine'
+    name: 'wrapLine',
+    standalone: false
 })
 export class WrapLinePipe implements PipeTransform {
 

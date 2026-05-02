@@ -2,9 +2,10 @@ import { Component } from '@angular/core';
 import { CommentService } from '../../shared/services/comment.service';
 import { Comment } from '../../shared/model/comment';
 @Component({
-  selector: 'app-account-comments',
-  templateUrl: './account-comments.component.html',
-  styleUrls: ['./account-comments.component.scss']
+    selector: 'app-account-comments',
+    templateUrl: './account-comments.component.html',
+    styleUrls: ['./account-comments.component.scss'],
+    standalone: false
 })
 export class AccountCommentsComponent {
   userComments: Comment[];

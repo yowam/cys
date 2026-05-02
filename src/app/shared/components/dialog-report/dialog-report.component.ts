@@ -11,9 +11,10 @@ export interface DialogData {
 }
 
 @Component({
-  selector: 'app-dialog-report',
-  templateUrl: './dialog-report.component.html',
-  styleUrls: ['./dialog-report.component.scss']
+    selector: 'app-dialog-report',
+    templateUrl: './dialog-report.component.html',
+    styleUrls: ['./dialog-report.component.scss'],
+    standalone: false
 })
 export class DialogReportComponent implements OnInit {
   public reportTypes = [

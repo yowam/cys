@@ -22,9 +22,10 @@ import { DialogLoginComponent } from '../../../dialog-login/dialog-login.compone
 import { testUser, scraperUser } from '../../../shared/constants/users';
 
 @Component({
-  selector: 'app-comment',
-  templateUrl: './comment.component.html',
-  styleUrl: './comment.component.scss'
+    selector: 'app-comment',
+    templateUrl: './comment.component.html',
+    styleUrl: './comment.component.scss',
+    standalone: false
 })
 export class CommentComponent implements OnInit, OnDestroy, AfterViewInit {
   @Input() comment: CommentWithTreeData;

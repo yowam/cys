@@ -13,7 +13,8 @@ import { ComponentPortal } from '@angular/cdk/portal';
 import { TooltipComponent } from './tooltip.component';
 
 @Directive({
-  selector: '[tooltip]',
+    selector: '[tooltip]',
+    standalone: false
 })
 export class TooltipDirective implements OnDestroy {
   @Input() tooltip: string | TemplateRef<void>;

@@ -11,9 +11,10 @@ import {
 } from '@angular/router';
 
 @Component({
-  selector: 'loading',
-  templateUrl: './loading.component.html',
-  styleUrls: ['./loading.component.scss'],
+    selector: 'loading',
+    templateUrl: './loading.component.html',
+    styleUrls: ['./loading.component.scss'],
+    standalone: false
 })
 export class LoadingComponent implements OnInit {
   @Input()

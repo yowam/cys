@@ -4,9 +4,10 @@ import { ConfessionsService } from '../../services/confessions.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-search-input',
-  templateUrl: './search-input.component.html',
-  styleUrls: ['./search-input.component.scss']
+    selector: 'app-search-input',
+    templateUrl: './search-input.component.html',
+    styleUrls: ['./search-input.component.scss'],
+    standalone: false
 })
 export class SearchInputComponent {
   searchInput = '';

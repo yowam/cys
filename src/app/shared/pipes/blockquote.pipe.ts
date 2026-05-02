@@ -1,7 +1,8 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'blockquote'
+    name: 'blockquote',
+    standalone: false
 })
 export class BlockquotePipe implements PipeTransform {
 

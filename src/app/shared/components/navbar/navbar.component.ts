@@ -10,9 +10,10 @@ import {
 import { Notification, NotificationContent } from '../../model/notification';
 
 @Component({
-  selector: 'app-navbar',
-  templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.scss']
+    selector: 'app-navbar',
+    templateUrl: './navbar.component.html',
+    styleUrls: ['./navbar.component.scss'],
+    standalone: false
 })
 export class NavbarComponent implements OnInit, OnDestroy {
   items = ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5'];

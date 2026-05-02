@@ -3,9 +3,10 @@ import { Router } from '@angular/router';
 import { ConfessionsService } from '../shared/services/confessions.service';
 
 @Component({
-  selector: 'app-tags',
-  templateUrl: './tags.component.html',
-  styleUrls: ['./tags.component.scss']
+    selector: 'app-tags',
+    templateUrl: './tags.component.html',
+    styleUrls: ['./tags.component.scss'],
+    standalone: false
 })
 export class TagsComponent implements OnInit {
   topTags: string[];

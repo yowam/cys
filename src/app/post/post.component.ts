@@ -16,9 +16,10 @@ import { debounceTime } from 'rxjs/operators';
 // export const numberPattern = /\d{5,}/g;
 
 @Component({
-  selector: 'app-post',
-  templateUrl: './post.component.html',
-  styleUrls: ['./post.component.scss']
+    selector: 'app-post',
+    templateUrl: './post.component.html',
+    styleUrls: ['./post.component.scss'],
+    standalone: false
 })
 export class PostComponent {
   // implements OnInit, OnDestroy {

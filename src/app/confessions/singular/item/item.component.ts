@@ -28,9 +28,10 @@ import { DialogLoginComponent } from '../../../dialog-login/dialog-login.compone
 import { DialogShareComponent } from '../../../shared/components/dialog-share/dialog-share.component';
 
 @Component({
-  selector: 'app-item',
-  templateUrl: './item.component.html',
-  styleUrls: ['./item.component.scss']
+    selector: 'app-item',
+    templateUrl: './item.component.html',
+    styleUrls: ['./item.component.scss'],
+    standalone: false
 })
 export class ItemComponent implements OnInit, AfterViewInit, OnDestroy {
   @Input() confession: Confession;
