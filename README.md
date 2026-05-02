@@ -2,7 +2,7 @@
 
 **Confessions** is an anonymous, community-driven web application where users can share personal stories, secrets, and confessions in a safe, moderated environment.
 
-Built with **Angular 19**, the app focuses on anonymity, content moderation, and smooth user experience with lazy-loaded modules and infinite scrolling.
+Built with **Angular 20**, the app focuses on anonymity, content moderation, and smooth user experience with lazy-loaded modules and infinite scrolling.
 
 ---
 
@@ -23,7 +23,7 @@ Built with **Angular 19**, the app focuses on anonymity, content moderation, and
 
 ## 🧱 Tech Stack
 
-- **Framework:** Angular 19  
+- **Framework:** Angular 20  
 - **Language:** TypeScript  
 - **State & Async:** RxJS  
 - **UI Enhancements:**
