@@ -1,9 +1,7 @@
 name = "cys"
-main = "src/worker.js"
+main = "src/main.js"
 compatibility_date = "2026-04-30"
 
 [assets]
 directory = "./dist/cys/browser"
 binding = "ASSETS"
-
-routes = ["confessyoursins.online/*"]
