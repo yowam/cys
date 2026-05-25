@@ -16,6 +16,10 @@
 
   dt {
     margin-bottom: 0.4em;
+
+    &.warning {
+      color: red;
+    }
   }
 
   .return-message {

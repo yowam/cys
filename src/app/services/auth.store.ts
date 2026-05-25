@@ -67,6 +67,22 @@ export class AuthStore {
     );
   }
 
+  deleteAccount(password: string): Observable<{ data: boolean }> {
+    const header = {
+      headers: new HttpHeaders()
+        .set('Authorization',  `Bearer ${this.getToken()}`)
+    }
+
+    return this.http.post<User>(`${environment.apiEndpoint}/api/delete-account`, { password }, header).pipe(
+      tap((response: any) => {
+        if (response.data) {
+          this.logout();
+        }
+      }),
+      shareReplay()
+    );
+  }
+
   logout() {
     this.subject.next(null);
     localStorage.removeItem(AUTH_DATA);

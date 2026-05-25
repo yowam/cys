@@ -6,5 +6,5 @@
 export const environment = {
   production: false,
   // apiEndpoint: 'http://localhost:5000',
-  apiEndpoint: 'https://confess-api.fly.dev',
+  apiEndpoint: 'https://cys-api.fly.dev',
 };

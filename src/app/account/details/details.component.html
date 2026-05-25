@@ -28,5 +28,35 @@
       <p class="return-message">Reset password failed</p>
     }
   </dd>
+  <dt class="warning">Delete account:</dt>
+  <dd>
+    @if (!deleteCompleted && !deleteFailed) {
+      <form [formGroup]="deleteForm">
+        <input
+          type="password"
+          placeholder="Confirm password"
+          formControlName="password"
+          autocomplete="current-password"
+        >
+
+        <button
+          type="button"
+          class="delete-btn"
+          (click)="deleteAccount()"
+          [disabled]="!deleteForm.valid || loading"
+        >
+          Delete Account
+        </button>
+      </form>
+    }
+
+    @if (deleteCompleted) {
+      <p class="return-message">Account deleted successfully</p>
+    }
+
+    @if (deleteFailed) {
+      <p class="return-message">Account deletion failed</p>
+    }
+  </dd>
 </dl>
 
