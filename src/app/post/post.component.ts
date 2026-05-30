@@ -1,7 +1,7 @@
 import {
   Component,
   ViewChild,
-  // OnInit,
+  OnInit,
   // OnDestroy
 } from '@angular/core';
 import { NgForm } from '@angular/forms';
@@ -21,7 +21,7 @@ import { debounceTime } from 'rxjs/operators';
     styleUrls: ['./post.component.scss'],
     standalone: false
 })
-export class PostComponent {
+export class PostComponent implements OnInit {
   // implements OnInit, OnDestroy {
   post = '';
   preview = false;
@@ -29,6 +29,7 @@ export class PostComponent {
   tagInput = '';
   disableSubmit = false;
   isSending = false;
+  showPrivacyRecommendation = true;
   // flagged = false;
   // modelChanged = new Subject<string>();
   // modelChangeSubscription: Subscription;
@@ -39,13 +40,19 @@ export class PostComponent {
     private router: Router
   ) {}
 
-  // ngOnInit(): void {
+  ngOnInit(): void {
+    const ua = navigator.userAgent;
+
+    this.showPrivacyRecommendation =
+      /Chrome|Chromium|Edg|OPR|Safari/.test(ua) &&
+      !(navigator as any).brave;
+
   //   this.modelChangeSubscription = this.modelChanged
   //     .pipe(debounceTime(500))
   //     .subscribe(postText => {
   //       this.checkForFlags(postText);
   //     });
-  // }
+  }
 
   // ngOnDestroy(): void {
   //   this.modelChangeSubscription.unsubscribe();

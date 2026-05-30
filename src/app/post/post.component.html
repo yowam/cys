@@ -81,6 +81,38 @@
   </div>
 
   <aside class="post-aside">
+    <div *ngIf="showPrivacyRecommendation" class="card">
+      <p>Privacy-focused browsers we recommend:</p>
+      <ul class="browser-list">
+        <li>
+          <a
+            href="https://brave.com/download/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img src="../../../../assets/brave.png" alt="Brave Browser">
+            <svg class="link-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3z"></path>
+              <path d="M5 5h6v2H7v10h10v-4h2v6H5V5z"></path>
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://mullvad.net/en/browser"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img src="../../../../assets/mullvad.png" alt="Mullvad Browser">
+            <svg class="link-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3z"></path>
+              <path d="M5 5h6v2H7v10h10v-4h2v6H5V5z"></path>
+            </svg>
+          </a>
+        </li>
+      </ul>
+    </div>
+
     <div class="card">
       <h2 class="post-aside-title">Rules of Posting:</h2>
       <ul>
@@ -96,6 +128,7 @@
         <li><p><u>You must be over 18 years old to post</u></p></li>
       </ul>
     </div>
+
     <div class="aside-meta">
       <p>
         For further details on our rules and policies

@@ -58,6 +58,39 @@
     }
   }
 
+  .browser-list {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin: 10px 0 0;
+    padding: 0 !important;
+
+    li {
+      display: block;
+    }
+
+    a {
+      display: flex;
+      align-items: flex-start;
+      height: 30px;
+      width: 50px;
+      cursor: pointer;
+
+      img {
+        height: 100%;
+      }
+    }
+  }
+
+  .link-icon {
+    width: 14px;
+    height: 14px;
+    fill: #d7dadc;
+    opacity: 0.8;
+    margin: -4px 0 0 -4px;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+
   .aside-meta {
 
     p,
