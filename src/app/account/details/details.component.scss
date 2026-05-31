@@ -8,6 +8,11 @@
   dd {
     color: $font-colour-alt;
     margin-bottom: 1em;
+    margin-left: 0;
+
+    @media (min-width: 768px) {
+      margin-left: 40px;
+    }
 
     &:last-child {
       margin-bottom: 0;
@@ -31,6 +36,7 @@
   }
 
   form {
+    max-width: 0;
     height: 3.2rem;
     display: flex;
     align-items: center;
@@ -48,6 +54,7 @@
       border: 1px solid $border-colour;
       border-left-width: 0;
       padding: 0.3rem 0.8rem;
+      white-space: nowrap;
       cursor: pointer;
 
       &:disabled {
