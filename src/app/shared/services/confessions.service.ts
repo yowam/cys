@@ -106,10 +106,10 @@ export class ConfessionsService {
       .toPromise();
   }
 
-  async getSimilarConfessions(tags: string[], score?: number): Promise<Confession[]> {
+  async getSimilarConfessions(tags: string[], score?: number, lastItemId?: string): Promise<Confession[]> {
     return this.http
       .post(
-        `${environment.apiEndpoint}/similar`, { tags, afterScore: score }
+        `${environment.apiEndpoint}/similar`, { tags, afterScore: score, afterId: lastItemId }
         )
         .pipe(
           map((response: any) => response)
