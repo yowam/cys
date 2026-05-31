@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
     standalone: false
 })
 export class PreviewLoadingComponent implements OnInit {
-  randomArray: Number[][] = Array(10).fill([0]);
+  randomArray: Number[][] = Array.from({ length: 10 }, () => []);
 
   constructor() {}
 

@@ -1,4 +1,4 @@
-@for (randomNumber of randomArray; track randomNumber) {
+@for (randomNumber of randomArray; track $index) {
   <div class="card">
     <div class="card-header">
       <div class="card-header-left">
@@ -10,7 +10,7 @@
     </div>
     <div class="card-body">
       <div class="card-content">
-        @for (item of randomNumber; track item; let isLast = $last) {
+        @for (item of randomNumber; track $index; let isLast = $last) {
           <span [ngStyle]="{'width': isLast ? (item + '%') : '100%'}"></span>
         }
       </div>
