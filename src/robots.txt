@@ -4,4 +4,4 @@ Disallow: /account
 
 Allow: /
 
-Sitemap: https://confessyoursins.online/sitemap.xmlo/s
+Sitemap: https://confessyoursins.online/sitemap.xml
