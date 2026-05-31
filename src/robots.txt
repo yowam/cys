@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /not-found
+Disallow: /account
+
+Allow: /
+
+Sitemap: https://confessyoursins.online/sitemap.xmlo/s

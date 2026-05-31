@@ -46,6 +46,9 @@ export class CommentComponent implements OnInit, OnDestroy, AfterViewInit {
   isSending = false;
   testUser = testUser;
   scraperUser = scraperUser;
+  trackById (index: number, thread: any) {
+    return thread.id;
+  }
 
   user: any;
   protected destroyed$: Subject<void> = new Subject<void>();

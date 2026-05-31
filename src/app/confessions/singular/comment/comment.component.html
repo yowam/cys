@@ -3,7 +3,7 @@
   [ngClass]="{'comment-container-yours': comment.belongsToId === user?.id}"
   >
   <span [id]="comment.id" class="comment-anchor"></span>
-  @for (thread of comment.commentTreePath | commentDepth; track thread; let index = $index; let first = $first; let last = $last) {
+  @for (thread of comment.commentTreePath | commentDepth; track trackById($index, thread); let index = $index; let first = $first; let last = $last) {
     <div
       class="comment-pre"
       [ngClass]="{
