@@ -17,6 +17,9 @@ export class AccountLikesComponent implements OnInit, OnDestroy {
   activeReaction: ReactionType | undefined;
   endOfLikes = false;
   isLoading = false;
+  trackById(index: number, reaction: Reaction) {
+    return reaction.id;
+  }
   protected destroyed$: Subject<void> = new Subject<void>();
 
   constructor(

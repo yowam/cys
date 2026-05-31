@@ -5,7 +5,7 @@
   [activeReaction]="activeReaction"
 ></app-filters>
 
-@for (reaction of userReaction; track reaction) {
+@for (reaction of userReaction; track trackById($index, reaction)) {
   <div>
     @if (reaction.confession) {
       <app-preview

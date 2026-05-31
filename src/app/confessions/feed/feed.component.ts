@@ -1,6 +1,5 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { Confession } from '../../shared/model/confession';
-import { ConfessionsService } from '../../shared/services/confessions.service';
 
 @Component({
     selector: 'app-feed',
@@ -17,14 +16,11 @@ export class FeedComponent implements OnInit {
   }
   @Output() loadMoreConfessions = new EventEmitter();
 
-  constructor(
-    private confessionService: ConfessionsService,
-  ) {}
+  constructor() {}
 
   ngOnInit() {}
 
   onScrolled(): void {
-    // console.log('scroll');
     this.loadMoreConfessions.emit();
   }
 }

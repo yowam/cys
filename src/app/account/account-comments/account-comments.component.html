@@ -3,7 +3,7 @@
   [trendingEnabled]="false"
 ></app-filters>
 
-@for (comment of userComments; track comment) {
+@for (comment of userComments; track trackById($index, comment)) {
   <div>
     <a
       href="javascript:;"

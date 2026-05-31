@@ -11,6 +11,9 @@ export class AccountCommentsComponent {
   userComments: Comment[];
   endOfComments = false;
   isLoading = false;
+  trackById(index: number, comment: Comment) {
+    return comment.id;
+  }
 
   constructor(
     private commentService: CommentService
