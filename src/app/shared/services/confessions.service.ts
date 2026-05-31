@@ -5,35 +5,35 @@ import { map, take, tap } from 'rxjs/operators';
 import { Confession } from '../../shared/model/confession';
 import { environment } from 'src/environments/environment';
 import { AuthStore } from 'src/app/services/auth.store';
+import { firstValueFrom } from 'rxjs';
 
 @Injectable()
 export class ConfessionsService {
   constructor(private http: HttpClient, private auth: AuthStore) {}
 
   async postConfession(confession: string) {
-    let endpoint = '';
-    this.auth.isLoggedIn$.pipe(take(1)).subscribe(loggedIn =>
-      endpoint = loggedIn ? `${environment.apiEndpoint}/api/confession` : `${environment.apiEndpoint}/confession`
+    const loggedIn = await firstValueFrom(
+      this.auth.isLoggedIn$.pipe(take(1))
     );
 
-    const header = {
-      headers: new HttpHeaders()
-        .set('Authorization',  `Bearer ${this.auth.getToken()}`)
-    }
+    const endpoint = loggedIn
+    ? `${environment.apiEndpoint}/api/confession`
+    : `${environment.apiEndpoint}/confession`;
 
-    return this.http
-      .post(
+    return this.http.post(
         endpoint, {
           body: confession
         },
-        header
+        {
+          headers: new HttpHeaders()
+            .set('Authorization', `Bearer ${this.auth.getToken()}`)
+        }
       )
       .pipe(
         map((response: any) => {
           return response.data;
         })
-      )
-      .toPromise();
+      ).toPromise();
   }
 
   async updateConfessionStatus(confessionId: string, contentStatus: string) {
